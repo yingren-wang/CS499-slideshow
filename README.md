@@ -1,2 +1,10 @@
 # CS499-slideshow
-This repo is for CS 499 Senior Design Project and belongs to Yingren Wang, Chandler Hall, Jared Boyd, and Ethan McNabb
+
+**Project Description**\
+This is an application that allows the user to crerate and display slide shows of selected photos.
+
+**Authors**
+- Chadler Hall
+- Ethan McNabb
+- Jared Boyd
+- Yingren Wang
