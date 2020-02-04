@@ -23,7 +23,10 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            if (panel1.Visible == false)
+                bunifuTransition1.ShowSync(panel1);
+            else
+                bunifuTransition1.HideSync(panel1);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -70,6 +73,41 @@ namespace test
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             this.flowLayoutPanel1.AutoScroll = true;                            // add the scrollbar to the layout panel
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // iterate through all the slides in the slide list
+        // hide the current slide using the transition, then show the next slide using the transition
+        // panel, pictures, bunifuTransition
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (panel1.Visible == false)
+                bunifuTransition1.ShowSync(panel1);
+            else
+                bunifuTransition1.HideSync(panel1);
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (panel1.Visible == false)
+                bunifuTransition2.ShowSync(panel1);
+            else
+                bunifuTransition2.HideSync(panel1);
         }
     }
 }

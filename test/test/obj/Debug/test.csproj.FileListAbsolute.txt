@@ -16,3 +16,14 @@ C:\Users\Chandler Hall\OneDrive\Desktop\test\test\obj\Debug\test.Properties.Reso
 C:\Users\Chandler Hall\OneDrive\Desktop\test\test\obj\Debug\test.csproj.GenerateResource.cache
 C:\Users\Chandler Hall\OneDrive\Desktop\test\test\obj\Debug\test.exe
 C:\Users\Chandler Hall\OneDrive\Desktop\test\test\obj\Debug\test.pdb
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\bin\Debug\test.exe.config
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\bin\Debug\test.exe
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\bin\Debug\test.pdb
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.csprojAssemblyReference.cache
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.Form1.resources
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.csproj.GenerateResource.cache
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.exe
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.pdb
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\bin\Debug\Bunifu_UI_v1.52.dll
+C:\Users\Yingren Wang\Documents\CheckCheck\CS499-slideshow\test\test\obj\Debug\test.csproj.CopyComplete
