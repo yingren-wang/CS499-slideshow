@@ -1,10 +1,4 @@
-# CS499-slideshow
+This branch contains simple rotate and horizontal slide transition for testing
 
-**Project Description**\
-This is an application that allows the user to crerate and display slide shows of selected photos.
-
-**Authors**
-- Chandler Hall
-- Ethan McNabb
-- Jared Boyd
-- Yingren Wang
+1. We really need an .ignore file
+2. need bunifu.DDL https://www.dllme.com/getfile.php?file=26238&id=5eca94d909f1ba4c5f3e35ac65a49076
