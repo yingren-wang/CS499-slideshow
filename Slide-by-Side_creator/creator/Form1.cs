@@ -50,13 +50,13 @@ namespace test
             string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
 
             foreach (string image in images)                        // loop for each file in the array
-            {
-                PictureBox pb = new PictureBox();                   // create a new picture box 'pb'
-
-                pb.Image = new Bitmap(image);                       // set the image to be the current path in the images array
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;      // stretch the image
-
-                thumbnailLayoutPanel.Controls.Add(pb);                  // add the picturebox to the flowLayoutPanel
+            {                                                       
+                PictureBox pb = new PictureBox();                   //--------------------------------------
+                                                                    //
+                pb.Image = new Bitmap(image);                       // move all of this functionality 
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;      // to slide handler class function and
+                                                                    // replace with a function call
+                thumbnailLayoutPanel.Controls.Add(pb);              //--------------------------------------
             }
             
         }
