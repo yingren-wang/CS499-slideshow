@@ -34,3 +34,12 @@ C:\Users\Chandler Hall\OneDrive\Desktop\CS 499\CS499-slideshow-master\CS499-slid
 C:\Users\Chandler Hall\OneDrive\Desktop\CS 499\CS499-slideshow-master\CS499-slideshow-master\Slide-by-Side_creator\creator\obj\Debug\creator.csproj.GenerateResource.cache
 C:\Users\Chandler Hall\OneDrive\Desktop\CS 499\CS499-slideshow-master\CS499-slideshow-master\Slide-by-Side_creator\creator\obj\Debug\test.exe
 C:\Users\Chandler Hall\OneDrive\Desktop\CS 499\CS499-slideshow-master\CS499-slideshow-master\Slide-by-Side_creator\creator\obj\Debug\test.pdb
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe.config
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.pdb
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csprojAssemblyReference.cache
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.Form1.resources
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.Properties.Resources.resources
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csproj.GenerateResource.cache
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.exe
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.pdb
