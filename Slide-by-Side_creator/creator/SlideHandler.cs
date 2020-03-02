@@ -13,9 +13,9 @@ namespace test
         //------------------
 
         public struct Slide {
-            private string path;
-            private int duration;
-            private int transitionTime;
+            private string path { get { return path; } set { path = value; } }
+            private int duration { get { return duration; } set { duration = value; } }
+            private int transitionTime { get { return transitionTime; } set { transitionTime = value; } }
             private enum transitionType {
                 wipeLeft,
                 wipeRight,
@@ -28,51 +28,21 @@ namespace test
         private Slide[] slideList;
 
 
-
-
         //-----------------------
         // all the get functions
         //-----------------------
 
-        // getSlideDuration
-        // retrieves the duration of the slide
-        public int getSlideDuration(Slide slide)
-        {
-            return 0;
-        }
-
-        // getSlidePath
-        // retrieves the Path of the slide
-        public string getSlidePath(Slide slide)
-        {
-            return "a";
-        }
-
-        // getSlideTransitoinTime
+        // getSlideTransitionType
         // retrieves the transition time for the slide
-        public int getSlideTransistionTime(Slide slide)
+        public string getSlideTransistionType(Slide slide)
         {
-            return 0;
+            return "Type";
         }
 
-        
+
         //--------------------------
         // all the change functions
         //--------------------------
-
-        // changeSlidePath
-        // Changes the directory path of the slide
-        private void changeSlidePath(Slide slide)
-        {
-
-        }
-
-        // changeSlideDuration
-        // changes the duration of the slide
-        private void changSlideDuration(Slide slide)
-        {
-
-        }
 
         // changeSlideTransition
         // changes the transition of the slide
@@ -81,11 +51,8 @@ namespace test
 
         }
 
-        // changeSlideTransitionTime
-        // changes the transition time of the slide
-        private void changeSlideTransitionTime(Slide slide)
-        {
+        
 
-        }
+
     }
 }

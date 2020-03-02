@@ -43,3 +43,12 @@ C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_c
 C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.exe
 C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.pdb
 C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csprojResolveAssemblyReference.cache
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe.config
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.pdb
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csprojAssemblyReference.cache
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.Form1.resources
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.Properties.Resources.resources
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csproj.GenerateResource.cache
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.exe
+C:\Users\Chandler Hall\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.pdb
