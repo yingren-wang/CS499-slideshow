@@ -13,9 +13,9 @@ namespace test
         //------------------
 
         public struct Slide {
-            private string path { get; set; }
-            private int duration { get; set; }
-            private int transitionTime { get; set; }
+            private string path { get { return path; } set { path = value; } }
+            private int duration { get { return duration; } set { duration = value; } }
+            private int transitionTime { get { return transitionTime; } set { transitionTime = value; } }
             private enum transitionType {
                 wipeLeft,
                 wipeRight,
