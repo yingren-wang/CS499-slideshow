@@ -41,11 +41,12 @@ namespace test
 
         private void pb_MouseDown(object sender, MouseEventArgs e)
         {
+            PictureBox item = (PictureBox)sender;
             switch (e.Button)
             {
                 case MouseButtons.Right:
-                    { 
-                        browseDirectoryDropDown.Show(this, new Point(e.X, e.Y));//places the menu at the pointer position
+                    {
+                        browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
                     }
                 break;
             }
