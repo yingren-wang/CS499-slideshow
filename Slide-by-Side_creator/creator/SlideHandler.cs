@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace formNamespace
 {
     class SlideHandler
     {
@@ -13,10 +13,16 @@ namespace test
         //------------------
 
         public struct Slide {
-            private string path { get { return path; } set { path = value; } }
-            private int duration { get { return duration; } set { duration = value; } }
-            private int transitionTime { get { return transitionTime; } set { transitionTime = value; } }
-            private enum transitionType {
+            private string path;
+            public string Path { get; set; }
+
+            private int duration;
+            public int Duration { get; set; }
+
+            private int transitionTime;
+            public int TransitionTime { get; set; }
+
+            public enum transitionType {
                 wipeLeft,
                 wipeRight,
                 wipeUp,
@@ -36,7 +42,9 @@ namespace test
         // retrieves the transition time for the slide
         public string getSlideTransistionType(Slide slide)
         {
-            return "Type";
+            string type = "";
+            //type = slide.transitionType;
+            return type;
         }
 
 
@@ -48,11 +56,18 @@ namespace test
         // changes the transition of the slide
         private void changeSlideTransition(Slide slide)
         {
-
+            
         }
 
         
-
+        // createSlide
+        // creates a slide
+        public void createSlide(string path)
+        {
+            Slide slide = new Slide();
+            slide.Path = path;
+            slide.Duration = 5;
+        }
 
     }
 }

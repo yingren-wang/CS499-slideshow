@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace test
+namespace formNamespace
 {
     public partial class Form1 : Form
     {
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         OpenFileDialog ofd = new OpenFileDialog();
+        SlideHandler sh = new SlideHandler();
 
         public Form1()
         {
@@ -50,9 +51,10 @@ namespace test
             string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
 
             foreach (string image in images)                        // loop for each file in the array
-            {                                                       
-                PictureBox pb = new PictureBox();                   //--------------------------------------
-                                                                    //
+            {
+                //sh.createSlide(image);       // mabye dont need this
+                                                                    //--------------------------------------
+                PictureBox pb = new PictureBox();                   //
                 pb.Image = new Bitmap(image);                       // move all of this functionality 
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;      // to slide handler class function and
                                                                     // replace with a function call
