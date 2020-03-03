@@ -39,6 +39,18 @@ namespace test
 
         }
 
+        private void pb_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    { 
+                        browseDirectoryDropDown.Show(this, new Point(e.X, e.Y));//places the menu at the pointer position
+                    }
+                break;
+            }
+        }
+
         private void browseButton_Click(object sender, EventArgs e)
         {
             d.SelectedPath = dirTextbox.Text;                                 // add the selected path from the folder broswer dialog to the text box
@@ -49,9 +61,10 @@ namespace test
             
             string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
 
-            foreach (string image in images)                        // loop for each file in the array
+            foreach (string image in images)                            // loop for each file in the array
             {
-                PictureBox pb = new PictureBox();                   // create a new picture box 'pb'
+                PictureBox pb = new PictureBox();                       // create a new picture box 'pb'
+                pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
 
                 pb.Image = new Bitmap(image);                       // set the image to be the current path in the images array
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;      // stretch the image
