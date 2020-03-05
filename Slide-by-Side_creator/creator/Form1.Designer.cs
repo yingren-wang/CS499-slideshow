@@ -40,7 +40,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.musicLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.slideLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.browseDirectoryDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addPictureToSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePictureFromSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseDirectoryDropDown.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -112,10 +115,26 @@
             this.slideLayoutPanel.Size = new System.Drawing.Size(1860, 164);
             this.slideLayoutPanel.TabIndex = 14;
             // 
-            // contextMenuStrip1
+            // browseDirectoryDropDown
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
+            this.browseDirectoryDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPictureToSlideshowToolStripMenuItem,
+            this.removePictureFromSlideshowToolStripMenuItem});
+            this.browseDirectoryDropDown.Name = "contextMenuStrip1";
+            this.browseDirectoryDropDown.Size = new System.Drawing.Size(335, 86);
+            // 
+            // addPictureToSlideshowToolStripMenuItem
+            // 
+            this.addPictureToSlideshowToolStripMenuItem.Name = "addPictureToSlideshowToolStripMenuItem";
+            this.addPictureToSlideshowToolStripMenuItem.Size = new System.Drawing.Size(334, 30);
+            this.addPictureToSlideshowToolStripMenuItem.Text = "Add picture to slideshow";
+            this.addPictureToSlideshowToolStripMenuItem.Click += new System.EventHandler(this.addPictureToSlideshowToolStripMenuItem_Click);
+            // 
+            // removePictureFromSlideshowToolStripMenuItem
+            // 
+            this.removePictureFromSlideshowToolStripMenuItem.Name = "removePictureFromSlideshowToolStripMenuItem";
+            this.removePictureFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(334, 30);
+            this.removePictureFromSlideshowToolStripMenuItem.Text = "Remove picture from slideshow";
             // 
             // Form1
             // 
@@ -133,6 +152,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.browseDirectoryDropDown.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,7 +171,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel musicLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel slideLayoutPanel;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip browseDirectoryDropDown;
+        private System.Windows.Forms.ToolStripMenuItem addPictureToSlideshowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePictureFromSlideshowToolStripMenuItem;
     }
 }
 

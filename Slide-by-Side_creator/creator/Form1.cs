@@ -47,7 +47,7 @@ namespace formNamespace
             {
                 case MouseButtons.Right:
                     {
-                        //browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                        browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
                     }
                     break;
             }
@@ -96,6 +96,11 @@ namespace formNamespace
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
