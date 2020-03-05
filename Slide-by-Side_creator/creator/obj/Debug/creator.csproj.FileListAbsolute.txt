@@ -52,3 +52,18 @@ C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_c
 C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\creator.pdb
 C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.Properties.Resources.resources
 C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\formNamespace.Form1.resources
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe.config
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.pdb
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csprojAssemblyReference.cache
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.Form1.resources
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.Properties.Resources.resources
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.csproj.GenerateResource.cache
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.exe
+C:\Users\thegi\Desktop\SCHOOL\2020 THE END\CS 499\SlidebySide_Creator\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.pdb
+C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\test.exe.config
+C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.exe
+C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\test.pdb
+C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\bin\Debug\creator.exe.config
+C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.exe
+C:\Users\Chandler Hall\OneDrive\Documents\GitHub\CS499-slideshow\Slide-by-Side_creator\creator\obj\Debug\creator.pdb
