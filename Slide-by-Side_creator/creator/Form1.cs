@@ -18,12 +18,16 @@ namespace test
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         
         //Variable Declaration
-        //Temp Music Track Handling Variables
+
+        //Temp Music Track Handling Variables///////////////////////////////////////////////////////////
         OpenFileDialog ofd = new OpenFileDialog();
         private readonly string currentTrackName = "No Track Selected";
         private string currentMusicPathName = "";
         bool musicPlaying = false;
         private System.Windows.Forms.Timer time = new System.Windows.Forms.Timer();
+        //END OF TEMP VARIABLES/////////////////////////////////////////////////////////////////////////
+
+        SoundHandler tempMusicHandler = new SoundHandler;
 
 
         public Form1()
