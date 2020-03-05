@@ -11,7 +11,7 @@ using System.IO;
 using System.Media;
 using System.Timers;
 
-namespace test
+namespace formNamespace
 {
     public partial class Form1 : Form
     {
@@ -27,7 +27,7 @@ namespace test
         private System.Windows.Forms.Timer time = new System.Windows.Forms.Timer();
         //END OF TEMP VARIABLES/////////////////////////////////////////////////////////////////////////
 
-        SoundHandler tempMusicHandler = new SoundHandler;
+        
 
 
         public Form1()

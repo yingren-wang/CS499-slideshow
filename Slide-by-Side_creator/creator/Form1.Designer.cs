@@ -1,4 +1,4 @@
-﻿namespace test
+﻿namespace formNamespace
 {
     partial class Form1
     {
