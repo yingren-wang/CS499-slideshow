@@ -40,6 +40,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.musicLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.slideLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // imageList1
@@ -111,6 +112,11 @@
             this.slideLayoutPanel.Size = new System.Drawing.Size(1860, 164);
             this.slideLayoutPanel.TabIndex = 14;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 26);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -145,6 +151,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel musicLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel slideLayoutPanel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

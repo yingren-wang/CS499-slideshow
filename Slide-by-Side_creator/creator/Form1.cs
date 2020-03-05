@@ -40,6 +40,19 @@ namespace formNamespace
 
         }
 
+        private void pb_MouseDown(object sender, MouseEventArgs e)
+        {
+            PictureBox item = (PictureBox)sender;
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        //browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                    }
+                    break;
+            }
+        }
+
         private void browseButton_Click(object sender, EventArgs e)
         {
             d.SelectedPath = dirTextbox.Text;                                 // add the selected path from the folder broswer dialog to the text box
@@ -50,15 +63,16 @@ namespace formNamespace
             
             string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
 
-            foreach (string image in images)                        // loop for each file in the array
+            foreach (string image in images)                // loop for each file in the array
             {
-                //sh.createSlide(image);       // mabye dont need this
-                                                                    //--------------------------------------
-                PictureBox pb = new PictureBox();                   //
-                pb.Image = new Bitmap(image);                       // move all of this functionality 
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;      // to slide handler class function and
-                                                                    // replace with a function call
-                thumbnailLayoutPanel.Controls.Add(pb);              //--------------------------------------
+                                                                        //--------------------------------------
+                PictureBox pb = new PictureBox();                       //
+                pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
+                                                                        //
+                pb.Image = new Bitmap(image);                           // move all of this functionality 
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;          // to slide handler class function and
+                                                                        // replace with a function call
+                thumbnailLayoutPanel.Controls.Add(pb);                  //--------------------------------------
             }
             
         }
