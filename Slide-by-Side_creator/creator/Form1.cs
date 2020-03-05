@@ -19,10 +19,7 @@ namespace formNamespace
         OpenFileDialog ofd = new OpenFileDialog();
         SlideHandler sh = new SlideHandler();
 
-        public Form1()
-        {
-
-        
+ 
         //Variable Declaration
 
 
