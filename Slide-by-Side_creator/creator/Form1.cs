@@ -18,7 +18,7 @@ namespace formNamespace
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         OpenFileDialog ofd = new OpenFileDialog();
         SlideHandler sh = new SlideHandler();
-
+        
  
         //Variable Declaration
 
@@ -61,6 +61,7 @@ namespace formNamespace
 
             
             string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
+             
 
             foreach (string image in images)                // loop for each file in the array
             {
@@ -94,6 +95,12 @@ namespace formNamespace
             if (drResult == System.Windows.Forms.DialogResult.OK)           // make sure the path is ok
             {
                 string[] v = Directory.GetFiles(d.SelectedPath, "*.wav");
+
+                sh.soundtrack.Path = v[0];  // add the path to struct soundtrack
+
+                sh.soundtrackList.Add(sh.soundtrack);  // adds the soundtrack struct to the list
+                
+ 
                 currentMusicPathName = v[0];  // make a variable for object with .wav file in the selected path
             }
 

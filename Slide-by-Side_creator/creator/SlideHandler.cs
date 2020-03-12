@@ -12,7 +12,9 @@ namespace formNamespace
         // member variables
         //------------------
 
-        public struct Slide {
+        // strcut for slides
+        public struct Slide 
+        {
             private string path;
             public string Path { get; set; }
 
@@ -27,16 +29,36 @@ namespace formNamespace
                 wipeRight,
                 wipeUp,
                 wipdeDown,
-                crossFade
+                crossFade,
+                none
             }
         }
+        public Slide slide;
 
-        private Slide[] slideList;
+        // struct for soundtrack
+        public struct SoundTrack
+        {
+            private string path;
+            public string Path { get; set; }
+            private int length;
+            public int Length { get; set; }
+        }
+        public SoundTrack soundtrack;
+
+        // array for slides
+         public List<Slide> slideList;
+
+        // array for soundtracks
+        public List<SoundTrack> soundtrackList;
 
 
-        //-----------------------
+
+
+        //-----------
+        // methods
+        //-----------
+        
         // all the get functions
-        //-----------------------
 
         // getSlideTransitionType
         // retrieves the transition time for the slide
@@ -48,9 +70,7 @@ namespace formNamespace
         }
 
 
-        //--------------------------
         // all the change functions
-        //--------------------------
 
         // changeSlideTransition
         // changes the transition of the slide
@@ -68,6 +88,9 @@ namespace formNamespace
             slide.Path = path;
             slide.Duration = 5;
         }
+
+
+        public c
 
     }
 }
