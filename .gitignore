@@ -1,6 +1,7 @@
-Debug/
-debug/
+*/Debug/*
+*/debug/*
 *DS_Store
 *.ide
 test/
-.vs/*
+*.vs/*
+*.vs/slnx.sqlite*
