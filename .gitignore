@@ -1,4 +1,5 @@
-[Dd]ebug/
+Debug/
+debug/
 *DS_Store
 *.ide
 test/
