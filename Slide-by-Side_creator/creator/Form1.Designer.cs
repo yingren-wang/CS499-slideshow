@@ -43,11 +43,33 @@
             this.browseDirectoryDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPictureToSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePictureFromSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.browseDirectoryDropDown.SuspendLayout();
             this.button2 = new System.Windows.Forms.Button();
             this.musicNameBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-
+            this.slideShowDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.moveToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowForSpecifyingSlotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSlideFromSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTransistionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noTransistionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wipeLeftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wipeRightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wipeUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wipeDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crossfadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transitionDurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.slideDurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.browseDirectoryDropDown.SuspendLayout();
+            this.slideShowDropDown.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -128,20 +150,21 @@
             this.addPictureToSlideshowToolStripMenuItem,
             this.removePictureFromSlideshowToolStripMenuItem});
             this.browseDirectoryDropDown.Name = "contextMenuStrip1";
-            this.browseDirectoryDropDown.Size = new System.Drawing.Size(335, 86);
+            this.browseDirectoryDropDown.Size = new System.Drawing.Size(242, 48);
             // 
             // addPictureToSlideshowToolStripMenuItem
             // 
             this.addPictureToSlideshowToolStripMenuItem.Name = "addPictureToSlideshowToolStripMenuItem";
-            this.addPictureToSlideshowToolStripMenuItem.Size = new System.Drawing.Size(334, 30);
+            this.addPictureToSlideshowToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.addPictureToSlideshowToolStripMenuItem.Text = "Add picture to slideshow";
             this.addPictureToSlideshowToolStripMenuItem.Click += new System.EventHandler(this.addPictureToSlideshowToolStripMenuItem_Click);
             // 
             // removePictureFromSlideshowToolStripMenuItem
             // 
             this.removePictureFromSlideshowToolStripMenuItem.Name = "removePictureFromSlideshowToolStripMenuItem";
-            this.removePictureFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(334, 30);
+            this.removePictureFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.removePictureFromSlideshowToolStripMenuItem.Text = "Remove picture from slideshow";
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(1189, 595);
@@ -172,6 +195,163 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // slideShowDropDown
+            // 
+            this.slideShowDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moveToToolStripMenuItem,
+            this.removeSlideFromSlideshowToolStripMenuItem,
+            this.editTransistionToolStripMenuItem,
+            this.slideDurationToolStripMenuItem});
+            this.slideShowDropDown.Name = "slideShowDropDown";
+            this.slideShowDropDown.Size = new System.Drawing.Size(233, 114);
+            // 
+            // moveToToolStripMenuItem
+            // 
+            this.moveToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.windowForSpecifyingSlotToolStripMenuItem});
+            this.moveToToolStripMenuItem.Name = "moveToToolStripMenuItem";
+            this.moveToToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.moveToToolStripMenuItem.Text = "Move To...";
+            // 
+            // windowForSpecifyingSlotToolStripMenuItem
+            // 
+            this.windowForSpecifyingSlotToolStripMenuItem.Name = "windowForSpecifyingSlotToolStripMenuItem";
+            this.windowForSpecifyingSlotToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.windowForSpecifyingSlotToolStripMenuItem.Text = "<Window for Specifying Slot>";
+            // 
+            // removeSlideFromSlideshowToolStripMenuItem
+            // 
+            this.removeSlideFromSlideshowToolStripMenuItem.Name = "removeSlideFromSlideshowToolStripMenuItem";
+            this.removeSlideFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.removeSlideFromSlideshowToolStripMenuItem.Text = "Remove Slide From Slideshow";
+            // 
+            // editTransistionToolStripMenuItem
+            // 
+            this.editTransistionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noTransistionToolStripMenuItem,
+            this.wipeLeftToolStripMenuItem,
+            this.wipeRightToolStripMenuItem,
+            this.wipeUpToolStripMenuItem,
+            this.wipeDownToolStripMenuItem,
+            this.crossfadeToolStripMenuItem,
+            this.transitionDurationToolStripMenuItem});
+            this.editTransistionToolStripMenuItem.Name = "editTransistionToolStripMenuItem";
+            this.editTransistionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.editTransistionToolStripMenuItem.Text = "Edit Transistion";
+            // 
+            // noTransistionToolStripMenuItem
+            // 
+            this.noTransistionToolStripMenuItem.Name = "noTransistionToolStripMenuItem";
+            this.noTransistionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noTransistionToolStripMenuItem.Text = "No Transistion";
+            // 
+            // wipeLeftToolStripMenuItem
+            // 
+            this.wipeLeftToolStripMenuItem.Name = "wipeLeftToolStripMenuItem";
+            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeLeftToolStripMenuItem.Text = "Wipe Left";
+            // 
+            // wipeRightToolStripMenuItem
+            // 
+            this.wipeRightToolStripMenuItem.Name = "wipeRightToolStripMenuItem";
+            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeRightToolStripMenuItem.Text = "Wipe Right";
+            // 
+            // wipeUpToolStripMenuItem
+            // 
+            this.wipeUpToolStripMenuItem.Name = "wipeUpToolStripMenuItem";
+            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeUpToolStripMenuItem.Text = "Wipe Up";
+            // 
+            // wipeDownToolStripMenuItem
+            // 
+            this.wipeDownToolStripMenuItem.Name = "wipeDownToolStripMenuItem";
+            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeDownToolStripMenuItem.Text = "Wipe Down";
+            // 
+            // crossfadeToolStripMenuItem
+            // 
+            this.crossfadeToolStripMenuItem.Name = "crossfadeToolStripMenuItem";
+            this.crossfadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crossfadeToolStripMenuItem.Text = "Cross-fade";
+            // 
+            // transitionDurationToolStripMenuItem
+            // 
+            this.transitionDurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.secondToolStripMenuItem,
+            this.secondsToolStripMenuItem,
+            this.secondsToolStripMenuItem1,
+            this.secondsToolStripMenuItem2,
+            this.secondsToolStripMenuItem3});
+            this.transitionDurationToolStripMenuItem.Name = "transitionDurationToolStripMenuItem";
+            this.transitionDurationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transitionDurationToolStripMenuItem.Text = "Transition Duration";
+            // 
+            // secondToolStripMenuItem
+            // 
+            this.secondToolStripMenuItem.Name = "secondToolStripMenuItem";
+            this.secondToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secondToolStripMenuItem.Text = "1 second";
+            // 
+            // secondsToolStripMenuItem
+            // 
+            this.secondsToolStripMenuItem.Name = "secondsToolStripMenuItem";
+            this.secondsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secondsToolStripMenuItem.Text = "2 seconds";
+            // 
+            // secondsToolStripMenuItem1
+            // 
+            this.secondsToolStripMenuItem1.Name = "secondsToolStripMenuItem1";
+            this.secondsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.secondsToolStripMenuItem1.Text = "3 seconds";
+            // 
+            // secondsToolStripMenuItem2
+            // 
+            this.secondsToolStripMenuItem2.Name = "secondsToolStripMenuItem2";
+            this.secondsToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.secondsToolStripMenuItem2.Text = "4 seconds";
+            // 
+            // secondsToolStripMenuItem3
+            // 
+            this.secondsToolStripMenuItem3.Name = "secondsToolStripMenuItem3";
+            this.secondsToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.secondsToolStripMenuItem3.Text = "5 seconds";
+            // 
+            // slideDurationToolStripMenuItem
+            // 
+            this.slideDurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5});
+            this.slideDurationToolStripMenuItem.Name = "slideDurationToolStripMenuItem";
+            this.slideDurationToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.slideDurationToolStripMenuItem.Text = "Slide Duration (seconds)";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "1";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "5";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Text = "10";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Text = "15";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,10 +367,11 @@
             this.Controls.Add(this.thumbnailLayoutPanel);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.dirTextbox);
-            this.Name = "SlideBySide Creator";
+            this.Name = "Form1";
             this.Text = "SlideBySide Creator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.browseDirectoryDropDown.ResumeLayout(false);
+            this.slideShowDropDown.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,6 +396,28 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox musicNameBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip slideShowDropDown;
+        private System.Windows.Forms.ToolStripMenuItem moveToToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windowForSpecifyingSlotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeSlideFromSlideshowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editTransistionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noTransistionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wipeLeftToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wipeRightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wipeUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wipeDownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crossfadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transitionDurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secondToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secondsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secondsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem secondsToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem secondsToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem slideDurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }
 
