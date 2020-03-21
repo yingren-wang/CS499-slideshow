@@ -1,4 +1,11 @@
-[Dd]ebug/
 *DS_Store
 *.ide
 test/
+.vs/
+*.suo
+x64/
+
+# Build Results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
