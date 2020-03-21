@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace formNamespace
 {
-    class SlideHandler
+    class SlideShowHandler
     {
         //------------------
         // member variables
         //------------------
 
         // struct for slides
-        public struct Slide 
+        public struct Slide
         {
             private string path;
             public string Path { get; set; }
@@ -24,7 +24,8 @@ namespace formNamespace
             private int transitionTime;
             public int TransitionTime { get; set; }
 
-            public enum transitionType {
+            public enum transitionType
+            {
                 wipeLeft,
                 wipeRight,
                 wipeUp,
@@ -32,8 +33,6 @@ namespace formNamespace
                 crossFade
             }
         }
-
-        private Slide[] slideList;
 
         // struct for soundtrack
         public struct SoundTrack
@@ -45,10 +44,10 @@ namespace formNamespace
         }
         public SoundTrack soundtrack;
 
-        // array for slides
-         public List<Slide> slideList;
+        // list for slides
+        public List<Slide> slideList;
 
-        // array for soundtracks
+        // list for soundtracks
         public List<SoundTrack> soundtrackList;
 
 
@@ -57,10 +56,10 @@ namespace formNamespace
         //-----------
         // methods
         //-----------
-        
-		//-----------------------        
-		// all the get functions
-		//-----------------------
+
+        //-----------------------        
+        // all the get functions
+        //-----------------------
 
         // getSlideTransitionType
         // retrieves the transition time for the slide
@@ -80,10 +79,10 @@ namespace formNamespace
         // changes the transition of the slide
         private void changeSlideTransition(Slide slide)
         {
-            
+
         }
 
-        
+
         // createSlide
         // creates a slide
         public void createSlide(string path)
@@ -92,9 +91,5 @@ namespace formNamespace
             slide.Path = path;
             slide.Duration = 5;
         }
-
-
-        public c
-
     }
 }
