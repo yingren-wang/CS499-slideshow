@@ -18,10 +18,13 @@ namespace formNamespace
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         OpenFileDialog ofd = new OpenFileDialog();
         SlideHandler sh = new SlideHandler();
-        
- 
+
         //Variable Declaration
 
+
+        // All selected images to add to slideshow panel////////////////////////////////////////////////
+        // TODO: move to the slideShowHandler class in the future
+        List<PictureBox> selectedImages = new List<PictureBox>();
 
         //Temp Music Track Handling Variables///////////////////////////////////////////////////////////
         private readonly string currentTrackName = "No Track Selected";
@@ -47,6 +50,7 @@ namespace formNamespace
                 case MouseButtons.Right:
                     {
                         browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                        selectedImages.Add(item);
                     }
                     break;
             }
@@ -121,6 +125,21 @@ namespace formNamespace
 
         private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (PictureBox selected in selectedImages)
+            {
+                slideLayoutPanel.Controls.Add(selected);
+
+                //panelName.Controls.Add(temp);
+                //temp.Width = 50;
+                //temp.Height = 350;
+                //temp.BorderStyle = BorderStyle.FixedSingle;
+                //temp.BackColor = Color.Red;
+                //temp.Top = temp.Height * panelName.Controls.Count;
+                //temp.Left = 300;
+                //topPipe[i] = temp;
+                //topPipe[i].Visible = true;
+            }
+
 
         }
 
