@@ -194,5 +194,10 @@ namespace formNamespace
                 time.Stop();
 
         }
+
+        private void removeSlideFromSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
