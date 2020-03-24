@@ -18,9 +18,20 @@ namespace formNamespace
 {
     public partial class Form1 : Form
     {
-        FolderBrowserDialog d;// = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
-        OpenFileDialog ofd;// = new OpenFileDialog();
-        SlideHandler sh;// = new SlideHandler();
+        FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
+        OpenFileDialog ofd = new OpenFileDialog();
+        SlideHandler sh = new SlideHandler();
+        
+ 
+        //Variable Declaration
+
+
+        //Temp Music Track Handling Variables///////////////////////////////////////////////////////////
+        private readonly string currentTrackName = "No Track Selected";
+        private string currentMusicPathName = "";
+        bool musicPlaying = false;
+        private System.Windows.Forms.Timer time = new System.Windows.Forms.Timer();
+        //END OF TEMP VARIABLES/////////////////////////////////////////////////////////////////////////
 
 
         //Variable Declaration
@@ -77,6 +88,7 @@ namespace formNamespace
 
             
             string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
+             
 
             foreach (string image in images)                // loop for each file in the array
             {

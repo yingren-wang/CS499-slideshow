@@ -74,9 +74,17 @@ namespace formNamespace
         }
 
 
-        //-----------------------
+        // array for soundtracks
+        public List<SoundTrack> soundtrackList;
+
+
+
+
+        //-----------
+        // methods
+        //-----------
+        
         // all the get functions
-        //-----------------------
 
         // getSlideTransitionType
         // retrieves the transition time for the slide
@@ -88,9 +96,7 @@ namespace formNamespace
         }
 
 
-        //--------------------------
         // all the change functions
-        //--------------------------
 
         // changeSlideTransition
         // changes the transition of the slide
@@ -109,6 +115,7 @@ namespace formNamespace
             slide.Duration = 5;
         }
 
+<<<<<<< HEAD
         // create new imported soundtrack entry
         public void createSoundTrack(string path)
         {   //make new track
@@ -163,6 +170,7 @@ namespace formNamespace
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+
 
     }
 }
