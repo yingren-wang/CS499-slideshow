@@ -17,7 +17,7 @@ namespace formNamespace
     {
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         OpenFileDialog ofd = new OpenFileDialog();
-        SlideHandler sh = new SlideHandler();
+        SlideShowHandler sh = new SlideShowHandler();
 
         //Variable Declaration
 
