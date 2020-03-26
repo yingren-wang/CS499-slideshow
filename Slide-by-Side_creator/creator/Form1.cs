@@ -445,5 +445,17 @@ namespace formNamespace
             //Update Panel with new drawn panels based on current list
             musicLayoutPanel.Update();
         }
+
+        private void removeSlideFromSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+            this.slideLayoutPanel.AutoScroll = true;
+            this.slideLayoutPanel.WrapContents = false;
+            this.slideLayoutPanel.HorizontalScroll.Enabled = true;
+        }
     }
 }
