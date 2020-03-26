@@ -43,7 +43,7 @@ namespace formNamespace
     }
 
 
-    public class SlideHandler
+    public class SlideShowHandler
     {
         //------------------
         // member variables
@@ -59,7 +59,7 @@ namespace formNamespace
         //List to hold organized sound tracks placed in slideshow
         public List<SoundTrack> SlideshowSoundTrackList = new List<SoundTrack>();
 
-        public SlideHandler()
+        public SlideShowHandler()
         {
             soundTrackPlayer.MediaOpened += (sender, path) =>
             {

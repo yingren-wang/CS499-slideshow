@@ -32,7 +32,6 @@ namespace formNamespace
         //Temp Music Track Handling Variables///////////////////////////////////////////////////////////
         private readonly string currentTrackName = "No Track Selected";
         private string currentMusicPathName = "";
-        bool musicPlaying = false;
         private System.Windows.Forms.Timer time = new System.Windows.Forms.Timer();
         //END OF TEMP VARIABLES/////////////////////////////////////////////////////////////////////////
 
@@ -52,7 +51,7 @@ namespace formNamespace
         {
             d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
             ofd = new OpenFileDialog();
-            sh = new SlideHandler();
+            sh = new SlideShowHandler();
             
             InitializeComponent();
 
@@ -358,7 +357,7 @@ namespace formNamespace
             // then perform swap
             if (swapCounter == 2)
             {
-                SlideHandler.Swap(sh.SlideshowSoundTrackList, a, b);
+                SlideShowHandler.Swap(sh.SlideshowSoundTrackList, a, b);
 
                 //update music panel with new list
                 updateMusicPanel();
