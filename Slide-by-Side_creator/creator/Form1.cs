@@ -199,5 +199,12 @@ namespace formNamespace
         {
 
         }
+
+        private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+            this.slideLayoutPanel.AutoScroll = true;
+            this.slideLayoutPanel.WrapContents = false;
+            this.slideLayoutPanel.HorizontalScroll.Enabled = true;
+        }
     }
 }
