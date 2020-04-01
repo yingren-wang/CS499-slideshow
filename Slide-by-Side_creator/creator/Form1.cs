@@ -77,6 +77,7 @@ namespace formNamespace
                     {
                         browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
                         selectedImages.Add(item);
+                        
                         //slideshowDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
                     }
                     break;
@@ -84,22 +85,14 @@ namespace formNamespace
             
         }
 
-        /*
-        private void pb_MouseDownTimeline(object sender, MouseEventArgs e)
+        private void pb_Click(object sender, EventArgs e)
         {
             PictureBox item = (PictureBox)sender;
-            switch (e.Button)
-            {
-                case MouseButtons.Left:
-                    {
-                        slideshowDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
-                        
-                        
-                    }
-                    break;
-            }
+            
+            
+            slideshowDropDown.Show(item, item.Location);    //places the menu at the pointer position
+             
         }
-        */
 
 
         private void browseButton_Click(object sender, EventArgs e)
@@ -189,6 +182,8 @@ namespace formNamespace
             foreach (PictureBox selected in selectedImages)
             {
                 slideLayoutPanel.Controls.Add(selected);
+                selected.MouseDown -= pb_MouseDown;
+                selected.Click += new EventHandler(pb_Click);
 
                 //panelName.Controls.Add(temp);
                 //temp.Width = 50;
