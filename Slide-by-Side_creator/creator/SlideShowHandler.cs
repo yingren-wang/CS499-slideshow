@@ -44,7 +44,6 @@ namespace formNamespace
         public int Duration { get; set; }
     }
 
-
     public class SlideShowHandler
 	{
         //------------------
@@ -171,6 +170,5 @@ namespace formNamespace
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
-
-    }
+	}
 }
