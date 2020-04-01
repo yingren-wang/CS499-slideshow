@@ -51,10 +51,30 @@ namespace formNamespace
                     {
                         browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
                         selectedImages.Add(item);
+                        //slideshowDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                    }
+                    break;
+            }
+            
+        }
+
+        /*
+        private void pb_MouseDownTimeline(object sender, MouseEventArgs e)
+        {
+            PictureBox item = (PictureBox)sender;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    {
+                        slideshowDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                        
+                        
                     }
                     break;
             }
         }
+        */
+
 
         private void browseButton_Click(object sender, EventArgs e)
         {
@@ -69,22 +89,20 @@ namespace formNamespace
 
             foreach (string image in images)                // loop for each file in the array
             {
-                                                                        //--------------------------------------
-                PictureBox pb = new PictureBox();                       //
-                pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
-                                                                        //
-                pb.Image = new Bitmap(image);                           // move all of this functionality 
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;          // to slide handler class function and
-                                                                        // replace with a function call
-                thumbnailLayoutPanel.Controls.Add(pb);                  //--------------------------------------
+                                                                                        //--------------------------------------
+                PictureBox pb = new PictureBox();                                       //
+                pb.MouseDown += new MouseEventHandler(pb_MouseDown);                    //Add handler for a dropdown menu on each picture box 
+                
+                pb.Image = new Bitmap(image);                                           // move all of this functionality 
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;                          // to slide handler class function and
+                                                                                        // replace with a function call
+                thumbnailLayoutPanel.Controls.Add(pb);                                  //--------------------------------------
             }
             
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-
 
         }
 
@@ -195,10 +213,7 @@ namespace formNamespace
 
         }
 
-        private void removeSlideFromSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -206,5 +221,7 @@ namespace formNamespace
             this.slideLayoutPanel.WrapContents = false;
             this.slideLayoutPanel.HorizontalScroll.Enabled = true;
         }
+
+        
     }
 }

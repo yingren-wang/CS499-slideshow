@@ -207,14 +207,13 @@
             this.transistionSettingsToolStripMenuItem,
             this.slideDurationToolStripMenuItem});
             this.slideshowDropDown.Name = "slideshowDropDown";
-            this.slideshowDropDown.Size = new System.Drawing.Size(235, 92);
+            this.slideshowDropDown.Size = new System.Drawing.Size(235, 114);
             // 
             // removeSlideFromSlideshowToolStripMenuItem
             // 
             this.removeSlideFromSlideshowToolStripMenuItem.Name = "removeSlideFromSlideshowToolStripMenuItem";
             this.removeSlideFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
             this.removeSlideFromSlideshowToolStripMenuItem.Text = "Move Slide to Other Position...";
-            this.removeSlideFromSlideshowToolStripMenuItem.Click += new System.EventHandler(this.removeSlideFromSlideshowToolStripMenuItem_Click);
             // 
             // removeSlideFromSlideshowToolStripMenuItem1
             // 
@@ -246,38 +245,44 @@
             // 
             // noneToolStripMenuItem
             // 
+            this.noneToolStripMenuItem.CheckOnClick = true;
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noneToolStripMenuItem.Text = "None";
             // 
             // crossFadeToolStripMenuItem
             // 
+            this.crossFadeToolStripMenuItem.CheckOnClick = true;
             this.crossFadeToolStripMenuItem.Name = "crossFadeToolStripMenuItem";
-            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.crossFadeToolStripMenuItem.Text = "Cross Fade";
             // 
             // wipeUpToolStripMenuItem
             // 
+            this.wipeUpToolStripMenuItem.CheckOnClick = true;
             this.wipeUpToolStripMenuItem.Name = "wipeUpToolStripMenuItem";
-            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeUpToolStripMenuItem.Text = "Wipe Up";
             // 
             // wipeDownToolStripMenuItem
             // 
+            this.wipeDownToolStripMenuItem.CheckOnClick = true;
             this.wipeDownToolStripMenuItem.Name = "wipeDownToolStripMenuItem";
-            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeDownToolStripMenuItem.Text = "Wipe Down";
             // 
             // wipeLeftToolStripMenuItem
             // 
+            this.wipeLeftToolStripMenuItem.CheckOnClick = true;
             this.wipeLeftToolStripMenuItem.Name = "wipeLeftToolStripMenuItem";
-            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeLeftToolStripMenuItem.Text = "Wipe Left";
             // 
             // wipeRightToolStripMenuItem
             // 
+            this.wipeRightToolStripMenuItem.CheckOnClick = true;
             this.wipeRightToolStripMenuItem.Name = "wipeRightToolStripMenuItem";
-            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeRightToolStripMenuItem.Text = "Wipe Right";
             // 
             // transsitionSettingsToolStripMenuItem
