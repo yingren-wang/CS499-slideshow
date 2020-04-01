@@ -88,9 +88,8 @@ namespace formNamespace
         private void pb_Click(object sender, EventArgs e)
         {
             PictureBox item = (PictureBox)sender;
-            
-            
-            slideshowDropDown.Show(item, item.Location);    //places the menu at the pointer position
+            var mouseEventArgs = e as MouseEventArgs;
+            slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
              
         }
 
