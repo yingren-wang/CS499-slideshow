@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "creator", "creator\creator.csproj", "{B6A23962-B0A3-49EB-8293-9C546E1967D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F0555394-19F0-49F5-B90B-83ECC3C4CE3B}"
+	ProjectSection(SolutionItems) = preProject
+		Decoder.cs = Decoder.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

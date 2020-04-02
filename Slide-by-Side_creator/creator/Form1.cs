@@ -21,6 +21,8 @@ namespace formNamespace
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         OpenFileDialog ofd = new OpenFileDialog();
         SlideShowHandler sh = new SlideShowHandler();
+        Encoder en = new Encoder();
+        Decoder de = new Decoder();
 
         //Variable Declaration
 
@@ -52,6 +54,8 @@ namespace formNamespace
             d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
             ofd = new OpenFileDialog();
             sh = new SlideShowHandler();
+            en = new Encoder();
+            de = new Decoder();
             
             InitializeComponent();
 
@@ -465,6 +469,35 @@ namespace formNamespace
             this.slideLayoutPanel.AutoScroll = true;
             this.slideLayoutPanel.WrapContents = false;
             this.slideLayoutPanel.HorizontalScroll.Enabled = true;
+        }
+
+        private void produceSlideShow_Click(object sender, EventArgs e)
+        {
+            //write sound tracks to file
+            en.WriteSoundTracksToFile(sh.SlideshowSoundTrackList);
+
+            //write slides to file
+            en.WriteSlidesToFile(sh.slideList);
+
+            //TESTING PURPOSES ONLY*************???????????????????????????
+            // REMOVE BEFORE FINAL PRODUCTION ?????????????????????????????
+            List<SoundTrack> testList = de.ImportSoundTracksFromFile();
+
+            foreach(SoundTrack x in testList)
+            {
+                Console.WriteLine(x.Path);
+                Console.WriteLine(x.Duration);
+            }
+
+            List<Slide> testSlideList = de.ImportSlidesFromFile();
+
+            foreach (Slide x in testSlideList)
+            {
+                Console.WriteLine(x.Path);
+                Console.WriteLine(x.Duration);
+            }
+
+            ////END TESTING CODE***********????????????????????????????????
         }
 
         
