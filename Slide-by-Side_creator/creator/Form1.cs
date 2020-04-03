@@ -124,17 +124,18 @@ namespace formNamespace
 
         private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (PictureBox selected in selectedImages)
-            {
-                slideLayoutPanel.Controls.Add(selected);
-                selected.MouseDown -= pb_MouseDown;
-                selected.Click += new EventHandler(pb_Click);
+            PictureBox item = selectedImages[0];
+            var tmp = item.ImageLocation;           // get the path of the image of the picturebox
 
-                
-            }
-            
+            Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));     // find the instance of it in the imported list
+            sh.addSlideToSlideshow(selectedSlide);  // add it to the timeline list
 
+            item.MouseDown -= pb_MouseDown;             // remove the thumbnail right-click menu
+            item.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+
+            slideLayoutPanel.Controls.Add(item);    // add it to the timeline flowlayoutpanel
         }
+
         private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             foreach (PictureBox selected in selectedImages)

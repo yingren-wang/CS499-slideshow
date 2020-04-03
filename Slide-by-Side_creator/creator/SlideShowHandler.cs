@@ -52,7 +52,11 @@ namespace formNamespace
         // members for slide
         //-------------------
 
-        public List<Slide> ImportedSlidesList = new List<Slide>();
+        // list for available slides
+        public List<Slide> ImportedSlideList = new List<Slide>();
+
+        // list for slides added to the timeline
+        public List<Slide> SlideshowSlideList = new List<Slide>();
 
         // list for slides
         public List<Slide> slideList;
@@ -83,8 +87,6 @@ namespace formNamespace
         // list for soundtracks
         public List<SoundTrack> soundtrackList;
 
-        // ---- end of members ---- //
-
 
 
         //-----------
@@ -107,9 +109,17 @@ namespace formNamespace
             slide.Path = path;
             slide.Duration = 5;
             slide.TransitionTime = 3;
-            ImportedSlidesList.Add(slide);
+            ImportedSlideList.Add(slide);
         }
         
+        //--------------
+        // 
+        public void addSlideToSlideshow(Slide slide)
+        {
+            SlideshowSlideList.Add(slide);
+        }
+
+
         // getSlideTransitionType
         // retrieves the transition time for the slide
         public string getSlideTransistionType(Slide slide)
