@@ -67,18 +67,46 @@ namespace formNamespace
         }
 
 
+        //------------------------
+        // slideshow functinality
+        //------------------------
+
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            d.SelectedPath = dirTextbox.Text;                               // add the selected path from the folder broswer dialog to the text box
+            DialogResult drResult = d.ShowDialog();
+            if (drResult == System.Windows.Forms.DialogResult.OK)           // make sure the path is ok
+                dirTextbox.Text = d.SelectedPath;                           // make the path show up on the textbox
+
+
+            string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
+
+
+            foreach (string image in images)        // loop for each file in the array
+            {
+
+                PictureBox pb = new PictureBox();
+                pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
+
+                pb.Image = new Bitmap(image);                   // apply the image to the picturebox                
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
+
+                thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
+                sh.createSlide(image);
+            }
+
+        }
 
         private void pb_MouseDown(object sender, MouseEventArgs e)
         {
             PictureBox item = (PictureBox)sender;
             switch (e.Button)
             {
-                case MouseButtons.Right:
+                case MouseButtons.Right:    // if it was right clicked
                     {
                         browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
-                        selectedImages.Add(item);
-                        
-                        //slideshowDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                        selectedImages.Add(item);       // adds the selected image to the selectedImages list
                     }
                     break;
             }
@@ -87,47 +115,54 @@ namespace formNamespace
 
         private void pb_Click(object sender, EventArgs e)
         {
-            PictureBox item = (PictureBox)sender;
-            var mouseEventArgs = e as MouseEventArgs;
+            PictureBox item = (PictureBox)sender;       
+            selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
+            var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
             slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
              
         }
 
-
-        private void browseButton_Click(object sender, EventArgs e)
+        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            d.SelectedPath = dirTextbox.Text;                                 // add the selected path from the folder broswer dialog to the text box
-            DialogResult drResult = d.ShowDialog();
-            if (drResult == System.Windows.Forms.DialogResult.OK)           // make sure the path is ok
-                dirTextbox.Text = d.SelectedPath;                             // make the path show up on the textbox
-
-            
-            string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
-             
-
-            foreach (string image in images)                // loop for each file in the array
+            foreach (PictureBox selected in selectedImages)
             {
-                                                                                        //--------------------------------------
-                PictureBox pb = new PictureBox();                                       //
-                pb.MouseDown += new MouseEventHandler(pb_MouseDown);                    //Add handler for a dropdown menu on each picture box 
+                slideLayoutPanel.Controls.Add(selected);
+                selected.MouseDown -= pb_MouseDown;
+                selected.Click += new EventHandler(pb_Click);
+
                 
-                pb.Image = new Bitmap(image);                                           // move all of this functionality 
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;                          // to slide handler class function and
-                                                                                        // replace with a function call
-                thumbnailLayoutPanel.Controls.Add(pb);                                  //--------------------------------------
             }
             
-        }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        }
+        private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            foreach (PictureBox selected in selectedImages)
+            {
+                selected.MouseDown += pb_MouseDown;
+                selected.Click -= new EventHandler(pb_Click);
+
+                thumbnailLayoutPanel.Controls.Add(selected);
+                slideLayoutPanel.Controls.Remove(selected);
+
+
+            }
 
         }
-
-        private void thumbnailLayoutPanel_Paint(object sender, PaintEventArgs e)
+        
+        private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
-            this.thumbnailLayoutPanel.AutoScroll = true;                            // add the scrollbar to the layout panel
+            this.slideLayoutPanel.AutoScroll = true;
+            this.slideLayoutPanel.WrapContents = false;
+            this.slideLayoutPanel.HorizontalScroll.Enabled = true;
         }
+
+        
+
+        //--------------------------
+        // soundtrack functionality
+        //--------------------------
+
 
         private void Music_Select_Button_Click(object sender, EventArgs e)
         {
@@ -168,34 +203,6 @@ namespace formNamespace
                     AvailSoundTrackListBox.Items.Add(track.Path);
                 }
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (PictureBox selected in selectedImages)
-            {
-                slideLayoutPanel.Controls.Add(selected);
-                selected.MouseDown -= pb_MouseDown;
-                selected.Click += new EventHandler(pb_Click);
-
-                //panelName.Controls.Add(temp);
-                //temp.Width = 50;
-                //temp.Height = 350;
-                //temp.BorderStyle = BorderStyle.FixedSingle;
-                //temp.BackColor = Color.Red;
-                //temp.Top = temp.Height * panelName.Controls.Count;
-                //temp.Left = 300;
-                //topPipe[i] = temp;
-                //topPipe[i].Visible = true;
-            }
-
-
         }
 
 
@@ -290,31 +297,6 @@ namespace formNamespace
             currentPlayer.Play(); //start music
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            //no action (its just a label)
-        }
-
-        private void musicNameBox1_TextChanged(object sender, EventArgs e)
-        {
-            //do nothing (i.e. this box just holds the track name)
-        }
-
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            //do nothing. this event handler is just used for labels
-        }
-
-        private void AvailSoundTrackListBox_ListIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void SwapTracksButton_Click(object sender, EventArgs e)
         {
@@ -389,20 +371,7 @@ namespace formNamespace
             updateMusicPanel();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void musicLayoutPanel_DragDrop(object sender, DragEventArgs e)
-        {
-            // TODO swap soundtracks
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
@@ -460,13 +429,70 @@ namespace formNamespace
 
         
 
-        private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
+        
+
+
+
+        //-----------------------------------------------------------
+        // all of the stuff from here on is just empty event handlers
+        //-----------------------------------------------------------
+
+
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            this.slideLayoutPanel.AutoScroll = true;
-            this.slideLayoutPanel.WrapContents = false;
-            this.slideLayoutPanel.HorizontalScroll.Enabled = true;
+
         }
 
-        
+        private void thumbnailLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+            this.thumbnailLayoutPanel.AutoScroll = true;                            // add the scrollbar to the layout panel
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void musicLayoutPanel_DragDrop(object sender, DragEventArgs e)
+        {
+            // TODO swap soundtracks
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //no action (its just a label)
+        }
+
+        private void musicNameBox1_TextChanged(object sender, EventArgs e)
+        {
+            //do nothing (i.e. this box just holds the track name)
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            //do nothing. this event handler is just used for labels
+        }
+
+        private void AvailSoundTrackListBox_ListIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

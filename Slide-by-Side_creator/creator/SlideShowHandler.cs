@@ -18,29 +18,24 @@ namespace formNamespace
 
         private int transitionTime;
         public int TransitionTime { get; set; }
-
         public enum transitionType
         {
+            none,
             wipeLeft,
             wipeRight,
             wipeUp,
             wipdeDown,
             crossFade
         }
-
-
     }
 
     //struct to hold soundtrack information
     public struct SoundTrack
     {
-
         private string path;
-
-        public string Path { get; set; }
+        public string Path { get; set; }    
 
         private int duration;
-
         public int Duration { get; set; }
     }
 
@@ -49,6 +44,31 @@ namespace formNamespace
         //------------------
         // member variables
         //------------------
+
+
+
+
+        //-------------------
+        // members for slide
+        //-------------------
+
+        public List<Slide> ImportedSlidesList = new List<Slide>();
+
+        // list for slides
+        public List<Slide> slideList;
+
+        public SlideShowHandler()
+        {
+            soundTrackPlayer.MediaOpened += (sender, path) =>
+            {
+
+            };
+        }
+
+
+        //------------------------
+        // members for soundtrack
+        //------------------------
 
         public MediaPlayer soundTrackPlayer = new MediaPlayer();
 
@@ -60,20 +80,10 @@ namespace formNamespace
         //List to hold organized sound tracks placed in slideshow
         public List<SoundTrack> SlideshowSoundTrackList = new List<SoundTrack>();
 
-        public SlideShowHandler()
-        {
-            soundTrackPlayer.MediaOpened += (sender, path) =>
-            {
-
-            };
-        }
-
-        // list for slides
-        public List<Slide> slideList;
-
         // list for soundtracks
         public List<SoundTrack> soundtrackList;
 
+        // ---- end of members ---- //
 
 
 
@@ -81,10 +91,25 @@ namespace formNamespace
         // methods
         //-----------
 
-        //-----------------------        
-        // all the get functions
-        //-----------------------
 
+        //----------------------
+        // all the slide stuff
+        //----------------------
+
+
+        //--------------------
+        // name: createSlide
+        // purpose: creates a struct slide with the information passed to it
+        //--------------------
+        public void createSlide(string path)
+        {
+            Slide slide = new Slide();
+            slide.Path = path;
+            slide.Duration = 5;
+            slide.TransitionTime = 3;
+            ImportedSlidesList.Add(slide);
+        }
+        
         // getSlideTransitionType
         // retrieves the transition time for the slide
         public string getSlideTransistionType(Slide slide)
@@ -94,11 +119,6 @@ namespace formNamespace
             return type;
         }
 
-
-        //--------------------------
-        // all the change functions
-        //--------------------------
-
         // changeSlideTransition
         // changes the transition of the slide
         private void changeSlideTransition(Slide slide)
@@ -107,14 +127,10 @@ namespace formNamespace
         }
 
 
-        // createSlide
-        // creates a slide
-        public void createSlide(string path)
-        {
-            Slide slide = new Slide();
-            slide.Path = path;
-            slide.Duration = 5;
-        }
+
+        //------------------
+        // soundtrack stuff
+        //------------------
 
         // create new imported soundtrack entry
         public void createSoundTrack(string path)
@@ -170,5 +186,8 @@ namespace formNamespace
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+
+
+        // ----- end of methods ----- //
 	}
 }
