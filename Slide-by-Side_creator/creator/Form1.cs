@@ -89,7 +89,8 @@ namespace formNamespace
                 PictureBox pb = new PictureBox();
                 pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
 
-                pb.Image = new Bitmap(image);                   // apply the image to the picturebox                
+                pb.Image = new Bitmap(image);                   // apply the image to the picturebox
+                pb.ImageLocation = image;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
 
                 thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
