@@ -46,7 +46,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.slideshowDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeSlideFromSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.swapSlides = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSlideFromSlideshowToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.transistionSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transistionTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -215,18 +215,19 @@
             // slideshowDropDown
             // 
             this.slideshowDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeSlideFromSlideshowToolStripMenuItem,
+            this.swapSlides,
             this.removeSlideFromSlideshowToolStripMenuItem1,
             this.transistionSettingsToolStripMenuItem,
             this.slideDurationToolStripMenuItem});
             this.slideshowDropDown.Name = "slideshowDropDown";
             this.slideshowDropDown.Size = new System.Drawing.Size(235, 114);
             // 
-            // removeSlideFromSlideshowToolStripMenuItem
+            // swapSlides
             // 
-            this.removeSlideFromSlideshowToolStripMenuItem.Name = "removeSlideFromSlideshowToolStripMenuItem";
-            this.removeSlideFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.removeSlideFromSlideshowToolStripMenuItem.Text = "Move Slide to Other Position...";
+            this.swapSlides.Name = "swapSlides";
+            this.swapSlides.Size = new System.Drawing.Size(234, 22);
+            this.swapSlides.Text = "Move Slide to Other Position...";
+            this.swapSlides.Click += new System.EventHandler(this.swapSlides_Click);
             // 
             // removeSlideFromSlideshowToolStripMenuItem1
             // 
@@ -605,7 +606,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip slideshowDropDown;
-        private System.Windows.Forms.ToolStripMenuItem removeSlideFromSlideshowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem swapSlides;
         private System.Windows.Forms.ToolStripMenuItem removeSlideFromSlideshowToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem transistionSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transistionTypeToolStripMenuItem;

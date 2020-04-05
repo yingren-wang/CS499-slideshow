@@ -125,33 +125,41 @@ namespace formNamespace
 
         private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PictureBox item = selectedImages[0];
-            var tmp = item.ImageLocation;           // get the path of the image of the picturebox
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;           // get the path of the image of the picturebox
 
             Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));     // find the instance of it in the imported list
             sh.addSlideToSlideshow(selectedSlide);  // add it to the timeline list
 
-            item.MouseDown -= pb_MouseDown;             // remove the thumbnail right-click menu
-            item.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+            selected.MouseDown -= pb_MouseDown;             // remove the thumbnail right-click menu
+            selected.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
 
-            slideLayoutPanel.Controls.Add(item);    // add it to the timeline flowlayoutpanel
+            slideLayoutPanel.Controls.Add(selected);    // add it to the timeline flowlayoutpanel
+            selectedImages.Clear();
         }
 
         private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            foreach (PictureBox selected in selectedImages)
-            {
-                selected.MouseDown += pb_MouseDown;
-                selected.Click -= new EventHandler(pb_Click);
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
 
-                thumbnailLayoutPanel.Controls.Add(selected);
-                slideLayoutPanel.Controls.Remove(selected);
+            Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));
+            sh.removeSlideFromSlideshow(selectedSlide);
 
+            selected.MouseDown += pb_MouseDown;
+            selected.Click -= new EventHandler(pb_Click);
 
-            }
+            thumbnailLayoutPanel.Controls.Add(selected);
+            slideLayoutPanel.Controls.Remove(selected);
+
+            selectedImages.Clear();
+        }
+
+        private void swapSlides_Click(object sender, EventArgs e)
+        {
 
         }
-        
+
         private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
             this.slideLayoutPanel.AutoScroll = true;
@@ -496,5 +504,6 @@ namespace formNamespace
 
         }
 
+        
     }
 }

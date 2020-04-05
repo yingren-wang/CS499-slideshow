@@ -112,11 +112,24 @@ namespace formNamespace
             ImportedSlideList.Add(slide);
         }
         
-        //--------------
-        // 
+
+        //---------------------------
+        // name: addSlideToSlideshow
+        // purpose: adds the selected slide to the list of slides that are included in the shlideshow timeline
+        //---------------------------
         public void addSlideToSlideshow(Slide slide)
         {
             SlideshowSlideList.Add(slide);
+        }
+
+
+        //--------------------------------
+        // name: removeSlideFromSlideshow
+        // purpose: removes the selected slide from the list of slides that are included in teh slideshow timeline
+        //--------------------------------
+        public void removeSlideFromSlideshow(Slide slide)
+        {
+            SlideshowSlideList.Remove(slide);
         }
 
 
