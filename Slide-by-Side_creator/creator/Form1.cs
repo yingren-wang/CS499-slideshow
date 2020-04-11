@@ -47,7 +47,9 @@ namespace formNamespace
         private int numTracksToPlay = 0;
         private int totalDuration = 0;
         private BackgroundWorker bgw = new BackgroundWorker(); //This is our worker that plays the musics and updates the progress bar
-
+        private string instructionText = " Welcome to SlidebySide Creator!"+
+            "\n\nPlease start by importing images and soundtracks using the buttons to the left!";
+        private string saveFileLocation;
 
         public Form1()
         {
@@ -68,6 +70,13 @@ namespace formNamespace
             bgw.ProgressChanged += new ProgressChangedEventHandler(bgw_ProgressChanged);
             bgw.WorkerReportsProgress = true;
             bgw.WorkerSupportsCancellation = true;
+
+            //add the welcome message
+            instructionsTextBox.Text = instructionText;
+
+            //Add save file instructions
+            saveTextBox.Text = "Once you have your show set up the way you want, click the red "+
+                "button below to choose a destination and a file name.";
         }
 
 
@@ -120,6 +129,10 @@ namespace formNamespace
                                                                                         // replace with a function call
                 thumbnailLayoutPanel.Controls.Add(pb);                                  //--------------------------------------
             }
+
+            //update instructions text
+            instructionsTextBox.Text = "Images Successfully Imported! Right click on an image to add it to the timeline";
+
             
         }
 
@@ -172,6 +185,9 @@ namespace formNamespace
                     AvailSoundTrackListBox.Items.Add(track.Path);
                 }
             }
+
+            //updated instrucitons
+            instructionsTextBox.Text = "Soundtracks successfully imported! Click on a track to highlight it and then click the \"Add Track to Show\" Button";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -199,6 +215,16 @@ namespace formNamespace
                 //topPipe[i].Visible = true;
             }
 
+            //update instructions
+            if (sh.SlideshowSoundTrackList != null)
+            {
+                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click" +
+                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
+            }
+            else
+            {
+                instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
+            }
 
         }
 
@@ -391,6 +417,17 @@ namespace formNamespace
 
             //update panel
             updateMusicPanel();
+
+            //update instructions
+            if(sh.slideList != null)
+            {
+                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click"+
+                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
+            }
+            else
+            {
+                instructionsTextBox.Text = "Awesome! Be sure to add some images to your timeline as well!";
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -473,33 +510,73 @@ namespace formNamespace
 
         private void produceSlideShow_Click(object sender, EventArgs e)
         {
-            //write sound tracks to file
-            en.WriteSoundTracksToFile(sh.SlideshowSoundTrackList);
+            //add code for obtaining directory name here
+            var svdlg = new SaveFileDialog();
 
-            //write slides to file
-            en.WriteSlidesToFile(sh.slideList);
+            if (svdlg.ShowDialog() == DialogResult.OK)
+            {
+                saveFileLocation = svdlg.FileName.ToString();
+            }
+            // saveFileLocation now holds name of desired file name in desired folder
+            //Console.WriteLine(saveFileLocation);
+
+            //Make a new directory at the location specified by the user
+            //call the directory what the user entered
+            if (!Directory.Exists(saveFileLocation))
+            {
+                Directory.CreateDirectory(saveFileLocation);
+            }
+
+
+            //write sound tracks to directory created by user save
+            en.WriteSoundTracksToFile(sh.SlideshowSoundTrackList, saveFileLocation);
+
+            //write slides to file 
+            en.WriteSlidesToFile(sh.slideList, saveFileLocation);
+
+            //Update the user 
+            instructionsTextBox.Text = "Your project was saved here:\n" + saveFileLocation +
+                "\n\n Please use the SlidebySide Player Application to view your project!";
 
             //TESTING PURPOSES ONLY*************???????????????????????????
             // REMOVE BEFORE FINAL PRODUCTION ?????????????????????????????
-            List<SoundTrack> testList = de.ImportSoundTracksFromFile();
+            //List<SoundTrack> testList = de.ImportSoundTracksFromFile();
 
-            foreach(SoundTrack x in testList)
-            {
-                Console.WriteLine(x.Path);
-                Console.WriteLine(x.Duration);
-            }
+            //foreach(SoundTrack x in testList)
+            //{
+            //    Console.WriteLine(x.Path);
+            //    Console.WriteLine(x.Duration);
+            //}
 
-            List<Slide> testSlideList = de.ImportSlidesFromFile();
+            //List<Slide> testSlideList = de.ImportSlidesFromFile();
 
-            foreach (Slide x in testSlideList)
-            {
-                Console.WriteLine(x.Path);
-                Console.WriteLine(x.Duration);
-            }
+            //foreach (Slide x in testSlideList)
+            //{
+            //    Console.WriteLine(x.Path);
+            //    Console.WriteLine(x.Duration);
+            //}
 
             ////END TESTING CODE***********????????????????????????????????
         }
 
-        
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void instructionsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

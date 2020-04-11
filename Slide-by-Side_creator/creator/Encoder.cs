@@ -22,7 +22,7 @@ namespace formNamespace
 			
 		}
 
-		public void WriteSoundTracksToFile(List<SoundTrack> currentSoundTrackList)
+		public void WriteSoundTracksToFile(List<SoundTrack> currentSoundTrackList, string pathToWrite)
 		{
 			List<SoundTrack> SoundTrackListToWrite = new List<SoundTrack>();
 
@@ -31,9 +31,8 @@ namespace formNamespace
 			{
 				SoundTrackListToWrite = new List<SoundTrack>(currentSoundTrackList);
 
-				//generate file name
-				string appDirectory = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-				string SoundTrackPath = appDirectory + "\\soundtracklist.json";
+				//generate file name (recieved directory plus the file name)
+				string SoundTrackPath = pathToWrite + "\\soundtracklist.json";
 
 				//convert for json writing
 				string jsonSoundTracks = JsonConvert.SerializeObject(SoundTrackListToWrite.ToArray());
@@ -50,7 +49,7 @@ namespace formNamespace
 			}
 		}
 
-		public void WriteSlidesToFile(List<Slide> currentSlideList)
+		public void WriteSlidesToFile(List<Slide> currentSlideList, string pathToWrite)
 		{
 			List<Slide> SlideListToWrite = new List<Slide>();
 
@@ -59,9 +58,8 @@ namespace formNamespace
 			{
 				SlideListToWrite = new List<Slide>(currentSlideList);
 
-				//generate file name
-				string appDirectory = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-				string SoundTrackPath = appDirectory + "\\slidelist.json";
+				//generate file name (recieved directory plus the file name)
+				string SoundTrackPath = pathToWrite + "\\slidelist.json";
 
 				//convert for json writing
 				string jsonSlides = JsonConvert.SerializeObject(SlideListToWrite.ToArray());
