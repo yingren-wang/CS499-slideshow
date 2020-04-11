@@ -157,7 +157,7 @@ namespace formNamespace
         }
 
         //This handler simply sets the selected slide so we are dealing with the right slide when changing the settings
-        private void transistionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void transitionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
         }
@@ -310,6 +310,54 @@ namespace formNamespace
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 30;
             selectedImages.Clear();
+        }
+
+        //--------------------------
+        // Handlers for Slide Duration Buttons
+        //--------------------------
+        private void transitionTime1Sec_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 1;
+        }
+
+        private void transitionTime2Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 2;
+        }
+
+        private void transitionTime3Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 3;
+        }
+
+        private void transitionTime4Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 4;
+        }
+
+        private void transitionTime5Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 5;
         }
 
         private void swapSlides_Click(object sender, EventArgs e)
