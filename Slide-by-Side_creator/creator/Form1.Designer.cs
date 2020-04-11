@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -77,7 +78,6 @@
             this.AddTrackToShow_Button = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
@@ -85,11 +85,21 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.instructionsTextBox = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.saveTextBox = new System.Windows.Forms.RichTextBox();
             this.browseDirectoryDropDown.SuspendLayout();
             this.slideshowDropDown.SuspendLayout();
-            this.AvailableSoundtracksPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -100,19 +110,22 @@
             // 
             // dirTextbox
             // 
-            this.dirTextbox.Location = new System.Drawing.Point(6, 19);
+            this.dirTextbox.Location = new System.Drawing.Point(5, 24);
             this.dirTextbox.Name = "dirTextbox";
-            this.dirTextbox.Size = new System.Drawing.Size(1111, 20);
+            this.dirTextbox.Size = new System.Drawing.Size(753, 20);
             this.dirTextbox.TabIndex = 5;
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(1123, 19);
+            this.browseButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.browseButton.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.browseButton.ForeColor = System.Drawing.Color.White;
+            this.browseButton.Location = new System.Drawing.Point(763, 24);
             this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(115, 134);
+            this.browseButton.Size = new System.Drawing.Size(102, 198);
             this.browseButton.TabIndex = 9;
-            this.browseButton.Text = "Import Images";
-            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Text = "IMPORT IMAGES";
+            this.browseButton.UseVisualStyleBackColor = false;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // timer1
@@ -122,49 +135,56 @@
             // 
             // thumbnailLayoutPanel
             // 
-            this.thumbnailLayoutPanel.Location = new System.Drawing.Point(6, 57);
+            this.thumbnailLayoutPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.thumbnailLayoutPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("thumbnailLayoutPanel.BackgroundImage")));
+            this.thumbnailLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.thumbnailLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.thumbnailLayoutPanel.Location = new System.Drawing.Point(5, 67);
             this.thumbnailLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.thumbnailLayoutPanel.Name = "thumbnailLayoutPanel";
-            this.thumbnailLayoutPanel.Size = new System.Drawing.Size(1111, 240);
+            this.thumbnailLayoutPanel.Size = new System.Drawing.Size(753, 155);
             this.thumbnailLayoutPanel.TabIndex = 10;
             this.thumbnailLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.thumbnailLayoutPanel_Paint);
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(17, 631);
+            this.progressBar.Location = new System.Drawing.Point(65, 626);
             this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1114, 16);
+            this.progressBar.Size = new System.Drawing.Size(1072, 16);
             this.progressBar.TabIndex = 11;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1123, 318);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button1.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button1.Location = new System.Drawing.Point(764, 245);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 44);
+            this.button1.Size = new System.Drawing.Size(101, 39);
             this.button1.TabIndex = 12;
-            this.button1.Text = "Import Music";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "IMPORT MUSIC";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Music_Select_Button_Click);
             // 
             // musicLayoutPanel
             // 
             this.musicLayoutPanel.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.musicLayoutPanel.Location = new System.Drawing.Point(17, 564);
+            this.musicLayoutPanel.Location = new System.Drawing.Point(65, 578);
             this.musicLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.musicLayoutPanel.Name = "musicLayoutPanel";
-            this.musicLayoutPanel.Size = new System.Drawing.Size(1114, 63);
+            this.musicLayoutPanel.Size = new System.Drawing.Size(1072, 44);
             this.musicLayoutPanel.TabIndex = 13;
             this.musicLayoutPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.musicLayoutPanel_DragDrop);
             // 
             // slideLayoutPanel
             // 
             this.slideLayoutPanel.BackColor = System.Drawing.Color.LightBlue;
-            this.slideLayoutPanel.Location = new System.Drawing.Point(17, 454);
+            this.slideLayoutPanel.Location = new System.Drawing.Point(65, 474);
             this.slideLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.slideLayoutPanel.Name = "slideLayoutPanel";
-            this.slideLayoutPanel.Size = new System.Drawing.Size(1114, 93);
+            this.slideLayoutPanel.Size = new System.Drawing.Size(1072, 78);
             this.slideLayoutPanel.TabIndex = 14;
             this.slideLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.slideLayoutPanel_Paint);
             // 
@@ -191,24 +211,28 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1140, 583);
+            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(1142, 618);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 23);
+            this.button2.Size = new System.Drawing.Size(119, 24);
             this.button2.TabIndex = 15;
-            this.button2.Text = "Test Tracks";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Text = "TEST TRACKS";
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Music_Test_Click);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(17, 549);
+            this.label1.Location = new System.Drawing.Point(62, 558);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 13);
+            this.label1.Size = new System.Drawing.Size(233, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Soundtracks in Slideshow:";
+            this.label1.Text = "SOUNDTRACKS IN SLIDESHOW:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -402,170 +426,290 @@
             // 
             // AvailableSoundtracksPanel
             // 
-            this.AvailableSoundtracksPanel.Controls.Add(this.AvailSoundTrackListBox);
-            this.AvailableSoundtracksPanel.Location = new System.Drawing.Point(6, 315);
+            this.AvailableSoundtracksPanel.Location = new System.Drawing.Point(5, 292);
             this.AvailableSoundtracksPanel.Name = "AvailableSoundtracksPanel";
-            this.AvailableSoundtracksPanel.Size = new System.Drawing.Size(1111, 100);
+            this.AvailableSoundtracksPanel.Size = new System.Drawing.Size(753, 95);
             this.AvailableSoundtracksPanel.TabIndex = 16;
             // 
             // AvailSoundTrackListBox
             // 
+            this.AvailSoundTrackListBox.BackColor = System.Drawing.Color.Black;
+            this.AvailSoundTrackListBox.ForeColor = System.Drawing.Color.White;
             this.AvailSoundTrackListBox.FormattingEnabled = true;
-            this.AvailSoundTrackListBox.Location = new System.Drawing.Point(3, 3);
+            this.AvailSoundTrackListBox.Location = new System.Drawing.Point(5, 245);
             this.AvailSoundTrackListBox.Name = "AvailSoundTrackListBox";
-            this.AvailSoundTrackListBox.Size = new System.Drawing.Size(1108, 95);
+            this.AvailSoundTrackListBox.Size = new System.Drawing.Size(750, 82);
             this.AvailSoundTrackListBox.TabIndex = 20;
             // 
             // AvialableImagesLabel
             // 
             this.AvialableImagesLabel.AutoSize = true;
-            this.AvialableImagesLabel.Location = new System.Drawing.Point(3, 42);
+            this.AvialableImagesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.AvialableImagesLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvialableImagesLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.AvialableImagesLabel.Location = new System.Drawing.Point(5, 47);
             this.AvialableImagesLabel.Name = "AvialableImagesLabel";
-            this.AvialableImagesLabel.Size = new System.Drawing.Size(90, 13);
+            this.AvialableImagesLabel.Size = new System.Drawing.Size(147, 18);
             this.AvialableImagesLabel.TabIndex = 17;
-            this.AvialableImagesLabel.Text = "Available Images:";
+            this.AvialableImagesLabel.Text = "IMPORTED IMAGES:";
             this.AvialableImagesLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 299);
+            this.label2.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.YellowGreen;
+            this.label2.Location = new System.Drawing.Point(5, 224);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 13);
+            this.label2.Size = new System.Drawing.Size(150, 18);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Available Sound Tracks:";
+            this.label2.Text = "IMPORTED TRACKS:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(17, 436);
+            this.label3.Location = new System.Drawing.Point(62, 454);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(173, 18);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Timeline:";
+            this.label3.Text = "SLIDES IN SLIDESHOW:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // AddTrackToShow_Button
             // 
-            this.AddTrackToShow_Button.Location = new System.Drawing.Point(1123, 367);
+            this.AddTrackToShow_Button.BackColor = System.Drawing.Color.BurlyWood;
+            this.AddTrackToShow_Button.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddTrackToShow_Button.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.AddTrackToShow_Button.Location = new System.Drawing.Point(764, 279);
             this.AddTrackToShow_Button.Name = "AddTrackToShow_Button";
-            this.AddTrackToShow_Button.Size = new System.Drawing.Size(115, 48);
+            this.AddTrackToShow_Button.Size = new System.Drawing.Size(101, 48);
             this.AddTrackToShow_Button.TabIndex = 20;
-            this.AddTrackToShow_Button.Text = "Add Track to Slideshow";
-            this.AddTrackToShow_Button.UseVisualStyleBackColor = true;
+            this.AddTrackToShow_Button.Text = "ADD TRACK TO SHOW";
+            this.AddTrackToShow_Button.UseVisualStyleBackColor = false;
             this.AddTrackToShow_Button.Click += new System.EventHandler(this.AddTrackToShow_Button_click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1140, 608);
+            this.button4.BackColor = System.Drawing.Color.Red;
+            this.button4.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.MistyRose;
+            this.button4.Location = new System.Drawing.Point(4, 110);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 39);
+            this.button4.Size = new System.Drawing.Size(280, 69);
             this.button4.TabIndex = 21;
-            this.button4.Text = "PRODUCE SLIDESHOW";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Text = "PRODUCE PROJECT";
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.produceSlideShow_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 3);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(5, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 13);
+            this.label4.Size = new System.Drawing.Size(233, 18);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Imported Images Directory:";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(1123, 163);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 134);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "Add Image to Slideshow";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label4.Text = "IMPORTED IMAGES DIRECTORY:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(1140, 513);
+            this.button6.BackColor = System.Drawing.Color.DimGray;
+            this.button6.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(1142, 531);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(113, 24);
+            this.button6.Size = new System.Drawing.Size(119, 21);
             this.button6.TabIndex = 24;
-            this.button6.Text = "Test Images";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Text = "TEST IMAGES";
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.AvailSoundTrackListBox);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.dirTextbox);
-            this.panel1.Controls.Add(this.AvialableImagesLabel);
-            this.panel1.Controls.Add(this.AddTrackToShow_Button);
-            this.panel1.Controls.Add(this.AvailableSoundtracksPanel);
-            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.dirTextbox);
+            this.panel1.Controls.Add(this.AddTrackToShow_Button);
+            this.panel1.Controls.Add(this.AvialableImagesLabel);
+            this.panel1.Controls.Add(this.AvailableSoundtracksPanel);
             this.panel1.Controls.Add(this.thumbnailLayoutPanel);
             this.panel1.Controls.Add(this.browseButton);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(5, 12);
+            this.panel1.Location = new System.Drawing.Point(65, 110);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1253, 421);
+            this.panel1.Size = new System.Drawing.Size(877, 339);
             this.panel1.TabIndex = 25;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1140, 454);
+            this.button7.BackColor = System.Drawing.Color.Silver;
+            this.button7.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(1142, 474);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(113, 24);
+            this.button7.Size = new System.Drawing.Size(119, 38);
             this.button7.TabIndex = 26;
-            this.button7.Text = "Swap Images";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Text = "SWAP IMAGES";
+            this.button7.UseVisualStyleBackColor = false;
             // 
             // SwapTracksButton
             // 
-            this.SwapTracksButton.Location = new System.Drawing.Point(1140, 543);
+            this.SwapTracksButton.BackColor = System.Drawing.Color.Silver;
+            this.SwapTracksButton.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SwapTracksButton.ForeColor = System.Drawing.Color.White;
+            this.SwapTracksButton.Location = new System.Drawing.Point(1142, 578);
             this.SwapTracksButton.Name = "SwapTracksButton";
-            this.SwapTracksButton.Size = new System.Drawing.Size(113, 24);
+            this.SwapTracksButton.Size = new System.Drawing.Size(119, 24);
             this.SwapTracksButton.TabIndex = 27;
-            this.SwapTracksButton.Text = "Swap Tracks";
-            this.SwapTracksButton.UseVisualStyleBackColor = true;
+            this.SwapTracksButton.Text = "SWAP TRACKS";
+            this.SwapTracksButton.UseVisualStyleBackColor = false;
             this.SwapTracksButton.Click += new System.EventHandler(this.SwapTracksButton_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1140, 484);
+            this.button3.BackColor = System.Drawing.Color.Gray;
+            this.button3.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(1142, 505);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 23);
+            this.button3.Size = new System.Drawing.Size(119, 29);
             this.button3.TabIndex = 28;
-            this.button3.Text = "Remove Image";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Text = "REMOVE IMAGE";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(1140, 564);
+            this.RemoveButton.BackColor = System.Drawing.Color.Gray;
+            this.RemoveButton.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveButton.ForeColor = System.Drawing.Color.White;
+            this.RemoveButton.Location = new System.Drawing.Point(1142, 599);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(113, 23);
+            this.RemoveButton.Size = new System.Drawing.Size(119, 23);
             this.RemoveButton.TabIndex = 29;
-            this.RemoveButton.Text = "Remove Track";
-            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Text = "REMOVE TRACK";
+            this.RemoveButton.UseVisualStyleBackColor = false;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Location = new System.Drawing.Point(7, 22);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1246, 71);
+            this.panel2.TabIndex = 24;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.Location = new System.Drawing.Point(7, 110);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(58, 339);
+            this.panel3.TabIndex = 30;
+            // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel4.Location = new System.Drawing.Point(7, 456);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(58, 186);
+            this.panel4.TabIndex = 31;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.instructionsTextBox);
+            this.panel5.Location = new System.Drawing.Point(949, 110);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(294, 141);
+            this.panel5.TabIndex = 32;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DimGray;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Controls.Add(this.saveTextBox);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.ForeColor = System.Drawing.Color.Transparent;
+            this.panel6.Location = new System.Drawing.Point(951, 257);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(292, 192);
+            this.panel6.TabIndex = 22;
+            // 
+            // instructionsTextBox
+            // 
+            this.instructionsTextBox.BackColor = System.Drawing.Color.Black;
+            this.instructionsTextBox.ForeColor = System.Drawing.Color.Lime;
+            this.instructionsTextBox.Location = new System.Drawing.Point(3, 25);
+            this.instructionsTextBox.Name = "instructionsTextBox";
+            this.instructionsTextBox.Size = new System.Drawing.Size(288, 113);
+            this.instructionsTextBox.TabIndex = 0;
+            this.instructionsTextBox.Text = "";
+            this.instructionsTextBox.TextChanged += new System.EventHandler(this.instructionsTextBox_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(84, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 18);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "INSTRUCTIONS";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(-1, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(291, 27);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "PRODUCE YOUR PROJECT";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // saveTextBox
+            // 
+            this.saveTextBox.BackColor = System.Drawing.Color.Black;
+            this.saveTextBox.ForeColor = System.Drawing.Color.Lime;
+            this.saveTextBox.Location = new System.Drawing.Point(4, 31);
+            this.saveTextBox.Name = "saveTextBox";
+            this.saveTextBox.Size = new System.Drawing.Size(278, 73);
+            this.saveTextBox.TabIndex = 27;
+            this.saveTextBox.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1265, 666);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.SwapTracksButton);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -577,10 +721,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.browseDirectoryDropDown.ResumeLayout(false);
             this.slideshowDropDown.ResumeLayout(false);
-            this.AvailableSoundtracksPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,7 +783,6 @@
         private System.Windows.Forms.Button AddTrackToShow_Button;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button7;
@@ -644,6 +790,15 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox instructionsTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RichTextBox saveTextBox;
     }
 }
 
