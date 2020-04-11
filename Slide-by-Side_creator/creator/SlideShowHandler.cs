@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace formNamespace
 {
-    public struct Slide
+    public class Slide
     {
         private string path;
         public string Path { get; set; }
@@ -18,13 +18,15 @@ namespace formNamespace
 
         private int transitionTime;
         public int TransitionTime { get; set; }
-        public enum transitionType
+        //Integer that stores the value of the transistion type, cause strings enums are not used in C#
+        public int transitionType { get; set; } 
+        public enum transitionTypes
         {
             none,
             wipeLeft,
             wipeRight,
             wipeUp,
-            wipdeDown,
+            wipeDown,
             crossFade
         }
     }
@@ -144,9 +146,32 @@ namespace formNamespace
 
         // changeSlideTransition
         // changes the transition of the slide
-        private void changeSlideTransition(Slide slide)
+        public void changeSlideTransition(Slide slide, string selectedType)
         {
-
+            switch (selectedType)
+            {
+                case "None":
+                    slide.transitionType = (int)Slide.transitionTypes.none;
+                    break;
+                case "Cross Fade":
+                    slide.transitionType = (int)Slide.transitionTypes.crossFade;
+                    break;
+                case "Wipe Up":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeUp;
+                    break;
+                case "Wipe Down":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeDown;
+                    break;
+                case "Wipe Left":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeLeft;
+                    break;
+                case "Wipe Right":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeRight;
+                    break;
+                default:
+                    slide.transitionType = (int)Slide.transitionTypes.none;
+                    break;
+            }
         }
 
 

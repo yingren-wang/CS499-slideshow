@@ -116,6 +116,7 @@ namespace formNamespace
 
         private void pb_Click(object sender, EventArgs e)
         {
+            selectedImages.Clear();
             PictureBox item = (PictureBox)sender;       
             selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
             var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
@@ -152,6 +153,162 @@ namespace formNamespace
             thumbnailLayoutPanel.Controls.Add(selected);
             slideLayoutPanel.Controls.Remove(selected);
 
+            selectedImages.Clear();
+        }
+
+        //This handler simply sets the selected slide so we are dealing with the right slide when changing the settings
+        private void transistionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        //--------------------------
+        // Handlers for Transition Type Buttons
+        //--------------------------
+
+        //The "none" button under Transistion Types
+        private void noneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "None";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Cross Fade" button under Transistion Types
+        private void crossFadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Cross Fade";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Up" button under Transistion Types
+        private void wipeUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Up";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Down" button under Transistion Types
+        private void wipeDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Down";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Left" button under Transistion Types
+        private void wipeLeftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Left";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Right" button under Transistion Types
+        private void wipeRightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Right";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //--------------------------
+        // Handlers for Slide Duration Buttons
+        //--------------------------
+        private void slideDuration5Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 5;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration10Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 10;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration15Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 15;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration20Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 20;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration25Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 25;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration30Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 30;
             selectedImages.Clear();
         }
 
