@@ -21,6 +21,8 @@ namespace formNamespace
         FolderBrowserDialog d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
         OpenFileDialog ofd = new OpenFileDialog();
         SlideShowHandler sh = new SlideShowHandler();
+        Encoder en = new Encoder();
+        Decoder de = new Decoder();
 
         //Variable Declaration
 
@@ -46,13 +48,17 @@ namespace formNamespace
         private int numTracksToPlay = 0;
         private int totalDuration = 0;
         private BackgroundWorker bgw = new BackgroundWorker(); //This is our worker that plays the musics and updates the progress bar
-
+        private string instructionText = " Welcome to SlidebySide Creator!"+
+            "\n\nPlease start by importing images and soundtracks using the buttons to the left!";
+        private string saveFileLocation;
 
         public Form1()
         {
             d = new FolderBrowserDialog();      // create the folder broswer dialog 'd'
             ofd = new OpenFileDialog();
             sh = new SlideShowHandler();
+            en = new Encoder();
+            de = new Decoder();
             
             InitializeComponent();
 
@@ -65,6 +71,13 @@ namespace formNamespace
             bgw.ProgressChanged += new ProgressChangedEventHandler(bgw_ProgressChanged);
             bgw.WorkerReportsProgress = true;
             bgw.WorkerSupportsCancellation = true;
+
+            //add the welcome message
+            instructionsTextBox.Text = instructionText;
+
+            //Add save file instructions
+            saveTextBox.Text = "Once you have your show set up the way you want, click the red "+
+                "button below to choose a destination and a file name.";
         }
 
 
@@ -221,6 +234,7 @@ namespace formNamespace
             {
                 Console.WriteLine("ERROR: THERE ARE TOO MANY ITEMS IN SELECTED IMAGES.\n\n");
             }
+
         }
 
         private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -243,6 +257,12 @@ namespace formNamespace
         //This handler simply sets the selected slide so we are dealing with the right slide when changing the settings
         private void transitionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+
+            //update instructions text
+            instructionsTextBox.Text = "Images Successfully Imported! Right click on an image to add it to the timeline";
+
+
             
         }
 
@@ -500,7 +520,50 @@ namespace formNamespace
                     AvailSoundTrackListBox.Items.Add(track.Path);
                 }
             }
+
+            //updated instrucitons
+            instructionsTextBox.Text = "Soundtracks successfully imported! Click on a track to highlight it and then click the \"Add Track to Show\" Button";
         }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (PictureBox selected in selectedImages)
+            {
+                slideLayoutPanel.Controls.Add(selected);
+                selected.MouseDown -= pb_MouseDown;
+                selected.Click += new EventHandler(pb_Click);
+
+                //panelName.Controls.Add(temp);
+                //temp.Width = 50;
+                //temp.Height = 350;
+                //temp.BorderStyle = BorderStyle.FixedSingle;
+                //temp.BackColor = Color.Red;
+                //temp.Top = temp.Height * panelName.Controls.Count;
+                //temp.Left = 300;
+                //topPipe[i] = temp;
+                //topPipe[i].Visible = true;
+            }
+
+            //update instructions
+            if (sh.SlideshowSoundTrackList != null)
+            {
+                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click" +
+                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
+            }
+            else
+            {
+                instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
+            }
+
+        }
+
 
 
         private void Music_Test_Click(object sender, EventArgs e)
@@ -666,6 +729,17 @@ namespace formNamespace
 
             //update panel
             updateMusicPanel();
+
+            //update instructions
+            if(sh.slideList != null)
+            {
+                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click"+
+                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
+            }
+            else
+            {
+                instructionsTextBox.Text = "Awesome! Be sure to add some images to your timeline as well!";
+            }
         }
 
         
@@ -791,6 +865,75 @@ namespace formNamespace
 
         }
 
-        
+        private void produceSlideShow_Click(object sender, EventArgs e)
+        {
+            //add code for obtaining directory name here
+            var svdlg = new SaveFileDialog();
+
+            if (svdlg.ShowDialog() == DialogResult.OK)
+            {
+                saveFileLocation = svdlg.FileName.ToString();
+            }
+            // saveFileLocation now holds name of desired file name in desired folder
+            //Console.WriteLine(saveFileLocation);
+
+            //Make a new directory at the location specified by the user
+            //call the directory what the user entered
+            if (!Directory.Exists(saveFileLocation))
+            {
+                Directory.CreateDirectory(saveFileLocation);
+            }
+
+
+            //write sound tracks to directory created by user save
+            en.WriteSoundTracksToFile(sh.SlideshowSoundTrackList, saveFileLocation);
+
+            //write slides to file 
+            en.WriteSlidesToFile(sh.slideList, saveFileLocation);
+
+            //Update the user 
+            instructionsTextBox.Text = "Your project was saved here:\n" + saveFileLocation +
+                "\n\n Please use the SlidebySide Player Application to view your project!";
+
+            //TESTING PURPOSES ONLY*************???????????????????????????
+            // REMOVE BEFORE FINAL PRODUCTION ?????????????????????????????
+            //List<SoundTrack> testList = de.ImportSoundTracksFromFile();
+
+            //foreach(SoundTrack x in testList)
+            //{
+            //    Console.WriteLine(x.Path);
+            //    Console.WriteLine(x.Duration);
+            //}
+
+            //List<Slide> testSlideList = de.ImportSlidesFromFile();
+
+            //foreach (Slide x in testSlideList)
+            //{
+            //    Console.WriteLine(x.Path);
+            //    Console.WriteLine(x.Duration);
+            //}
+
+            ////END TESTING CODE***********????????????????????????????????
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void instructionsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
