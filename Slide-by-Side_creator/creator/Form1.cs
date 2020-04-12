@@ -211,6 +211,17 @@ namespace formNamespace
 
             slideLayoutPanel.Controls.Add(selected);    // add it to the timeline flowlayoutpanel
             selectedImages.Clear();
+
+            //update instructions
+            if (sh.SlideshowSoundTrackList != null)
+            {
+                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click" +
+                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
+            }
+            else
+            {
+                instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
+            }
         }
 
         //Functionality for the swap button
@@ -532,37 +543,7 @@ namespace formNamespace
         }
 
 
-        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (PictureBox selected in selectedImages)
-            {
-                slideLayoutPanel.Controls.Add(selected);
-                selected.MouseDown -= pb_MouseDown;
-                selected.Click += new EventHandler(pb_Click);
-
-                //panelName.Controls.Add(temp);
-                //temp.Width = 50;
-                //temp.Height = 350;
-                //temp.BorderStyle = BorderStyle.FixedSingle;
-                //temp.BackColor = Color.Red;
-                //temp.Top = temp.Height * panelName.Controls.Count;
-                //temp.Left = 300;
-                //topPipe[i] = temp;
-                //topPipe[i].Visible = true;
-            }
-
-            //update instructions
-            if (sh.SlideshowSoundTrackList != null)
-            {
-                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click" +
-                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
-            }
-            else
-            {
-                instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
-            }
-
-        }
+        
 
 
 
@@ -860,10 +841,6 @@ namespace formNamespace
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void produceSlideShow_Click(object sender, EventArgs e)
         {
