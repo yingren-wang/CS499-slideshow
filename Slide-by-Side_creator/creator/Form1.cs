@@ -37,6 +37,7 @@ namespace formNamespace
 
 
         //Variable Declaration
+        private bool isSwapping = false; //Boolean that tells program whether or not user is trying to swap slide
         private MediaPlayer currentPlayer = new MediaPlayer();
         private bool musicPlaying = false;
         private readonly object _lock = new object();
@@ -114,14 +115,74 @@ namespace formNamespace
             
         }
 
+        //Function that controls functionality for swapping two slides
+        private void swapSlidesFunc()
+        {
+            int a = 0;
+            int b = 0;
+            //Check to make sure there are only two images
+            if(selectedImages.Count == 2)
+            {
+                //Get the two slides
+                //First slide
+                var tmp = selectedImages[0].ImageLocation;
+                Slide firstSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+                a = sh.SlideshowSlideList.IndexOf(firstSlide);
+
+                //Second slide
+                tmp = selectedImages[1].ImageLocation;
+                Slide secondSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+                b = sh.SlideshowSlideList.IndexOf(secondSlide);
+
+                //Update list
+                SlideShowHandler.Swap(sh.SlideshowSlideList, a, b);
+                //Update view
+                updateSlideTimeline();
+                //Swap complete; reset flags and clear the selectedSlidelist
+                isSwapping = false;
+                selectedImages.Clear();
+            }
+        }
+
+        private void updateSlideTimeline()
+        {
+            //clear panel before redraw
+            slideLayoutPanel.Controls.Clear();
+
+            foreach (Slide slide in sh.SlideshowSlideList)
+            {
+                //build new pictureBoxes
+                PictureBox pb = new PictureBox();
+
+
+                pb.Image = new Bitmap(slide.Path);                   // apply the image to the picturebox
+                pb.ImageLocation = slide.Path;
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox 
+                pb.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+
+                slideLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel
+            }
+        }
+
+
         private void pb_Click(object sender, EventArgs e)
         {
-            selectedImages.Clear();
-            PictureBox item = (PictureBox)sender;       
-            selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
-            var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
-            slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
-             
+            if(isSwapping == true)
+            {
+                PictureBox item = (PictureBox)sender;
+                selectedImages.Add(item);
+                //You are clicking the second slide, perform swap functionality
+                swapSlidesFunc();
+            }
+            //Else, normal functionality
+            else
+            {
+                selectedImages.Clear();
+                PictureBox item = (PictureBox)sender;
+                selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
+                var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
+                slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
+            }
         }
 
         private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,6 +198,29 @@ namespace formNamespace
 
             slideLayoutPanel.Controls.Add(selected);    // add it to the timeline flowlayoutpanel
             selectedImages.Clear();
+        }
+
+        //Functionality for the swap button
+        private void swapSlides_Click(object sender, EventArgs e)
+        {
+            //If only one thing is in selected images, toggle swapping mode
+            if(selectedImages.Count == 1)
+            {
+                //Set isSwapping to true, if it isn't already
+                if(!isSwapping)
+                {
+                    isSwapping = true;
+                    Console.WriteLine("Swapping mode has been enabled\n\n");
+                }
+                else
+                {
+                    Console.WriteLine("Swapping was already enabled. You might have a problem.\n\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("ERROR: THERE ARE TOO MANY ITEMS IN SELECTED IMAGES.\n\n");
+            }
         }
 
         private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -166,14 +250,17 @@ namespace formNamespace
         // Handlers for Transition Type Buttons
         //--------------------------
 
-        //The "none" button under Transistion Types
+        //The "none" button under Transistion Types, only this first one will be commented because all of these are similar
         private void noneToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //get the right image from pb_Click
             PictureBox selected = selectedImages[0];
             var tmp = selected.ImageLocation;
 
+            //Use the image location to find the right slide in saved data structure
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
 
+            //Set up a string to trigger the right case in changeSlideTransition's switch statement.
             string transitionSetting = "None";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             selectedImages.Clear();
@@ -358,11 +445,6 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 5;
-        }
-
-        private void swapSlides_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
