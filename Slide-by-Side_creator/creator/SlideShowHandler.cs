@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace formNamespace
 {
-    public struct Slide
+    public class Slide
     {
         private string path;
         public string Path { get; set; }
@@ -18,29 +18,26 @@ namespace formNamespace
 
         private int transitionTime;
         public int TransitionTime { get; set; }
-
-        public enum transitionType
+        //Integer that stores the value of the transistion type, cause strings enums are not used in C#
+        public int transitionType { get; set; } 
+        public enum transitionTypes
         {
+            none,
             wipeLeft,
             wipeRight,
             wipeUp,
-            wipdeDown,
+            wipeDown,
             crossFade
         }
-
-
     }
 
     //struct to hold soundtrack information
     public struct SoundTrack
     {
-
         private string path;
-
-        public string Path { get; set; }
+        public string Path { get; set; }    
 
         private int duration;
-
         public int Duration { get; set; }
     }
 
@@ -49,6 +46,35 @@ namespace formNamespace
         //------------------
         // member variables
         //------------------
+
+
+
+
+        //-------------------
+        // members for slide
+        //-------------------
+
+        // list for available slides
+        public List<Slide> ImportedSlideList = new List<Slide>();
+
+        // list for slides added to the timeline
+        public List<Slide> SlideshowSlideList = new List<Slide>();
+
+        // list for slides
+        public List<Slide> slideList;
+
+        public SlideShowHandler()
+        {
+            soundTrackPlayer.MediaOpened += (sender, path) =>
+            {
+
+            };
+        }
+
+
+        //------------------------
+        // members for soundtrack
+        //------------------------
 
         public MediaPlayer soundTrackPlayer = new MediaPlayer();
 
@@ -60,20 +86,8 @@ namespace formNamespace
         //List to hold organized sound tracks placed in slideshow
         public List<SoundTrack> SlideshowSoundTrackList = new List<SoundTrack>();
 
-        public SlideShowHandler()
-        {
-            soundTrackPlayer.MediaOpened += (sender, path) =>
-            {
-
-            };
-        }
-
-        // list for slides
-        public List<Slide> slideList;
-
         // list for soundtracks
         public List<SoundTrack> soundtrackList;
-
 
 
 
@@ -81,9 +95,45 @@ namespace formNamespace
         // methods
         //-----------
 
-        //-----------------------        
-        // all the get functions
-        //-----------------------
+
+        //----------------------
+        // all the slide stuff
+        //----------------------
+
+
+        //--------------------
+        // name: createSlide
+        // purpose: creates a struct slide with the information passed to it
+        //--------------------
+        public void createSlide(string path)
+        {
+            Slide slide = new Slide();
+            slide.Path = path;
+            slide.Duration = 5;
+            slide.TransitionTime = 3;
+            ImportedSlideList.Add(slide);
+        }
+        
+
+        //---------------------------
+        // name: addSlideToSlideshow
+        // purpose: adds the selected slide to the list of slides that are included in the shlideshow timeline
+        //---------------------------
+        public void addSlideToSlideshow(Slide slide)
+        {
+            SlideshowSlideList.Add(slide);
+        }
+
+
+        //--------------------------------
+        // name: removeSlideFromSlideshow
+        // purpose: removes the selected slide from the list of slides that are included in teh slideshow timeline
+        //--------------------------------
+        public void removeSlideFromSlideshow(Slide slide)
+        {
+            SlideshowSlideList.Remove(slide);
+        }
+
 
         // getSlideTransitionType
         // retrieves the transition time for the slide
@@ -94,27 +144,41 @@ namespace formNamespace
             return type;
         }
 
-
-        //--------------------------
-        // all the change functions
-        //--------------------------
-
         // changeSlideTransition
         // changes the transition of the slide
-        private void changeSlideTransition(Slide slide)
+        public void changeSlideTransition(Slide slide, string selectedType)
         {
-
+            switch (selectedType)
+            {
+                case "None":
+                    slide.transitionType = (int)Slide.transitionTypes.none;
+                    break;
+                case "Cross Fade":
+                    slide.transitionType = (int)Slide.transitionTypes.crossFade;
+                    break;
+                case "Wipe Up":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeUp;
+                    break;
+                case "Wipe Down":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeDown;
+                    break;
+                case "Wipe Left":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeLeft;
+                    break;
+                case "Wipe Right":
+                    slide.transitionType = (int)Slide.transitionTypes.wipeRight;
+                    break;
+                default:
+                    slide.transitionType = (int)Slide.transitionTypes.none;
+                    break;
+            }
         }
 
 
-        // createSlide
-        // creates a slide
-        public void createSlide(string path)
-        {
-            Slide slide = new Slide();
-            slide.Path = path;
-            slide.Duration = 5;
-        }
+
+        //------------------
+        // soundtrack stuff
+        //------------------
 
         // create new imported soundtrack entry
         public void createSoundTrack(string path)
@@ -170,5 +234,8 @@ namespace formNamespace
             list[indexA] = list[indexB];
             list[indexB] = tmp;
         }
+
+
+        // ----- end of methods ----- //
 	}
 }

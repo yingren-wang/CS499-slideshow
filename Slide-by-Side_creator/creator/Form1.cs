@@ -39,6 +39,7 @@ namespace formNamespace
 
 
         //Variable Declaration
+        private bool isSwapping = false; //Boolean that tells program whether or not user is trying to swap slide
         private MediaPlayer currentPlayer = new MediaPlayer();
         private bool musicPlaying = false;
         private readonly object _lock = new object();
@@ -80,71 +81,416 @@ namespace formNamespace
         }
 
 
+        //------------------------
+        // slideshow functinality
+        //------------------------
+
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            d.SelectedPath = dirTextbox.Text;                               // add the selected path from the folder broswer dialog to the text box
+            DialogResult drResult = d.ShowDialog();
+            if (drResult == System.Windows.Forms.DialogResult.OK)           // make sure the path is ok
+                dirTextbox.Text = d.SelectedPath;                           // make the path show up on the textbox
+
+
+            string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
+
+
+            foreach (string image in images)        // loop for each file in the array
+            {
+
+                PictureBox pb = new PictureBox();
+                pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
+
+                pb.Image = new Bitmap(image);                   // apply the image to the picturebox
+                pb.ImageLocation = image;
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
+
+                thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
+                sh.createSlide(image);
+            }
+
+        }
 
         private void pb_MouseDown(object sender, MouseEventArgs e)
         {
             PictureBox item = (PictureBox)sender;
             switch (e.Button)
             {
-                case MouseButtons.Right:
+                case MouseButtons.Right:    // if it was right clicked
                     {
                         browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
-                        selectedImages.Add(item);
-                        
-                        //slideshowDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                        selectedImages.Add(item);       // adds the selected image to the selectedImages list
                     }
                     break;
             }
             
         }
 
-        private void pb_Click(object sender, EventArgs e)
+        //Function that controls functionality for swapping two slides
+        private void swapSlidesFunc()
         {
-            PictureBox item = (PictureBox)sender;
-            var mouseEventArgs = e as MouseEventArgs;
-            slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
-             
+            int a = 0;
+            int b = 0;
+            //Check to make sure there are only two images
+            if(selectedImages.Count == 2)
+            {
+                //Get the two slides
+                //First slide
+                var tmp = selectedImages[0].ImageLocation;
+                Slide firstSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+                a = sh.SlideshowSlideList.IndexOf(firstSlide);
+
+                //Second slide
+                tmp = selectedImages[1].ImageLocation;
+                Slide secondSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+                b = sh.SlideshowSlideList.IndexOf(secondSlide);
+
+                //Update list
+                SlideShowHandler.Swap(sh.SlideshowSlideList, a, b);
+                //Update view
+                updateSlideTimeline();
+                //Swap complete; reset flags and clear the selectedSlidelist
+                isSwapping = false;
+                selectedImages.Clear();
+            }
+        }
+
+        private void updateSlideTimeline()
+        {
+            //clear panel before redraw
+            slideLayoutPanel.Controls.Clear();
+
+            foreach (Slide slide in sh.SlideshowSlideList)
+            {
+                //build new pictureBoxes
+                PictureBox pb = new PictureBox();
+
+
+                pb.Image = new Bitmap(slide.Path);                   // apply the image to the picturebox
+                pb.ImageLocation = slide.Path;
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox 
+                pb.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+
+                slideLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel
+            }
         }
 
 
-        private void browseButton_Click(object sender, EventArgs e)
+        private void pb_Click(object sender, EventArgs e)
         {
-            d.SelectedPath = dirTextbox.Text;                                 // add the selected path from the folder broswer dialog to the text box
-            DialogResult drResult = d.ShowDialog();
-            if (drResult == System.Windows.Forms.DialogResult.OK)           // make sure the path is ok
-                dirTextbox.Text = d.SelectedPath;                             // make the path show up on the textbox
-
-            
-            string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
-             
-
-            foreach (string image in images)                // loop for each file in the array
+            if(isSwapping == true)
             {
-                                                                                        //--------------------------------------
-                PictureBox pb = new PictureBox();                                       //
-                pb.MouseDown += new MouseEventHandler(pb_MouseDown);                    //Add handler for a dropdown menu on each picture box 
-                
-                pb.Image = new Bitmap(image);                                           // move all of this functionality 
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;                          // to slide handler class function and
-                                                                                        // replace with a function call
-                thumbnailLayoutPanel.Controls.Add(pb);                                  //--------------------------------------
+                PictureBox item = (PictureBox)sender;
+                selectedImages.Add(item);
+                //You are clicking the second slide, perform swap functionality
+                swapSlidesFunc();
             }
+            //Else, normal functionality
+            else
+            {
+                selectedImages.Clear();
+                PictureBox item = (PictureBox)sender;
+                selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
+                var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
+                slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
+            }
+        }
+
+        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;           // get the path of the image of the picturebox
+
+            Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));     // find the instance of it in the imported list
+            sh.addSlideToSlideshow(selectedSlide);  // add it to the timeline list
+
+            selected.MouseDown -= pb_MouseDown;             // remove the thumbnail right-click menu
+            selected.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+
+            slideLayoutPanel.Controls.Add(selected);    // add it to the timeline flowlayoutpanel
+            selectedImages.Clear();
+
+            //update instructions
+            if (sh.SlideshowSoundTrackList != null)
+            {
+                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click" +
+                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
+            }
+            else
+            {
+                instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
+            }
+        }
+
+        //Functionality for the swap button
+        private void swapSlides_Click(object sender, EventArgs e)
+        {
+            //If only one thing is in selected images, toggle swapping mode
+            if(selectedImages.Count == 1)
+            {
+                //Set isSwapping to true, if it isn't already
+                if(!isSwapping)
+                {
+                    isSwapping = true;
+                    Console.WriteLine("Swapping mode has been enabled\n\n");
+                }
+                else
+                {
+                    Console.WriteLine("Swapping was already enabled. You might have a problem.\n\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("ERROR: THERE ARE TOO MANY ITEMS IN SELECTED IMAGES.\n\n");
+            }
+
+        }
+
+        private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));
+            sh.removeSlideFromSlideshow(selectedSlide);
+
+            selected.MouseDown += pb_MouseDown;
+            selected.Click -= new EventHandler(pb_Click);
+
+            thumbnailLayoutPanel.Controls.Add(selected);
+            slideLayoutPanel.Controls.Remove(selected);
+
+            selectedImages.Clear();
+        }
+
+        //This handler simply sets the selected slide so we are dealing with the right slide when changing the settings
+        private void transitionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
 
             //update instructions text
             instructionsTextBox.Text = "Images Successfully Imported! Right click on an image to add it to the timeline";
 
+
             
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+        //--------------------------
+        // Handlers for Transition Type Buttons
+        //--------------------------
 
+        //The "none" button under Transistion Types, only this first one will be commented because all of these are similar
+        private void noneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //get the right image from pb_Click
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            //Use the image location to find the right slide in saved data structure
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            //Set up a string to trigger the right case in changeSlideTransition's switch statement.
+            string transitionSetting = "None";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
         }
 
-        private void thumbnailLayoutPanel_Paint(object sender, PaintEventArgs e)
+        //The "Cross Fade" button under Transistion Types
+        private void crossFadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.thumbnailLayoutPanel.AutoScroll = true;                            // add the scrollbar to the layout panel
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Cross Fade";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
         }
+
+        //The "Wipe Up" button under Transistion Types
+        private void wipeUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Up";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Down" button under Transistion Types
+        private void wipeDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Down";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Left" button under Transistion Types
+        private void wipeLeftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Left";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //The "Wipe Right" button under Transistion Types
+        private void wipeRightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+
+            string transitionSetting = "Wipe Right";
+            sh.changeSlideTransition(selectedSlide, transitionSetting);
+            selectedImages.Clear();
+        }
+
+        //--------------------------
+        // Handlers for Slide Duration Buttons
+        //--------------------------
+        private void slideDuration5Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 5;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration10Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 10;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration15Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 15;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration20Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 20;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration25Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 25;
+            selectedImages.Clear();
+        }
+
+        private void slideDuration30Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.Duration = 30;
+            selectedImages.Clear();
+        }
+
+        //--------------------------
+        // Handlers for Slide Duration Buttons
+        //--------------------------
+        private void transitionTime1Sec_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 1;
+        }
+
+        private void transitionTime2Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 2;
+        }
+
+        private void transitionTime3Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 3;
+        }
+
+        private void transitionTime4Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 4;
+        }
+
+        private void transitionTime5Secs_Click(object sender, EventArgs e)
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
+            selectedSlide.TransitionTime = 5;
+        }
+
+        private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+            this.slideLayoutPanel.AutoScroll = true;
+            this.slideLayoutPanel.WrapContents = false;
+            this.slideLayoutPanel.HorizontalScroll.Enabled = true;
+        }
+
+        
+
+        //--------------------------
+        // soundtrack functionality
+        //--------------------------
+
 
         private void Music_Select_Button_Click(object sender, EventArgs e)
         {
@@ -190,43 +536,15 @@ namespace formNamespace
             instructionsTextBox.Text = "Soundtracks successfully imported! Click on a track to highlight it and then click the \"Add Track to Show\" Button";
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
 
-        private void addPictureToSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (PictureBox selected in selectedImages)
-            {
-                slideLayoutPanel.Controls.Add(selected);
-                selected.MouseDown -= pb_MouseDown;
-                selected.Click += new EventHandler(pb_Click);
+        
 
-                //panelName.Controls.Add(temp);
-                //temp.Width = 50;
-                //temp.Height = 350;
-                //temp.BorderStyle = BorderStyle.FixedSingle;
-                //temp.BackColor = Color.Red;
-                //temp.Top = temp.Height * panelName.Controls.Count;
-                //temp.Left = 300;
-                //topPipe[i] = temp;
-                //topPipe[i].Visible = true;
-            }
-
-            //update instructions
-            if (sh.SlideshowSoundTrackList != null)
-            {
-                instructionsTextBox.Text = "Great! Edit your slideshow on the timeline below and then click" +
-                        "the big red \"PRODUCE SLIDESHOW\" button when you're ready to write it to a foler!";
-            }
-            else
-            {
-                instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
-            }
-
-        }
 
 
         private void Music_Test_Click(object sender, EventArgs e)
@@ -320,31 +638,6 @@ namespace formNamespace
             currentPlayer.Play(); //start music
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            //no action (its just a label)
-        }
-
-        private void musicNameBox1_TextChanged(object sender, EventArgs e)
-        {
-            //do nothing (i.e. this box just holds the track name)
-        }
-
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            //do nothing. this event handler is just used for labels
-        }
-
-        private void AvailSoundTrackListBox_ListIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void SwapTracksButton_Click(object sender, EventArgs e)
         {
@@ -430,20 +723,7 @@ namespace formNamespace
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void musicLayoutPanel_DragDrop(object sender, DragEventArgs e)
-        {
-            // TODO swap soundtracks
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
@@ -501,12 +781,66 @@ namespace formNamespace
 
         
 
-        private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
+        
+
+
+
+        //-----------------------------------------------------------
+        // all of the stuff from here on is just empty event handlers
+        //-----------------------------------------------------------
+
+
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            this.slideLayoutPanel.AutoScroll = true;
-            this.slideLayoutPanel.WrapContents = false;
-            this.slideLayoutPanel.HorizontalScroll.Enabled = true;
+
         }
+
+        private void thumbnailLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+            this.thumbnailLayoutPanel.AutoScroll = true;                            // add the scrollbar to the layout panel
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void musicLayoutPanel_DragDrop(object sender, DragEventArgs e)
+        {
+            // TODO swap soundtracks
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //no action (its just a label)
+        }
+
+        private void musicNameBox1_TextChanged(object sender, EventArgs e)
+        {
+            //do nothing (i.e. this box just holds the track name)
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            //do nothing. this event handler is just used for labels
+        }
+
+        private void AvailSoundTrackListBox_ListIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void produceSlideShow_Click(object sender, EventArgs e)
         {
