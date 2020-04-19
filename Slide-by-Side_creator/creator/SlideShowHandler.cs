@@ -185,6 +185,7 @@ namespace formNamespace
         {   //make new track
             SoundTrack soundTrack = new SoundTrack();
             //set its path name
+
             soundTrack.Path = path;
 
             //open sound file to get duration
