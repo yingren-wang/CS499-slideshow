@@ -43,7 +43,6 @@
             this.slideLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.browseDirectoryDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPictureToSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removePictureFromSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.slideshowDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -194,23 +193,16 @@
             // browseDirectoryDropDown
             // 
             this.browseDirectoryDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addPictureToSlideshowToolStripMenuItem,
-            this.removePictureFromSlideshowToolStripMenuItem});
+            this.addPictureToSlideshowToolStripMenuItem});
             this.browseDirectoryDropDown.Name = "contextMenuStrip1";
-            this.browseDirectoryDropDown.Size = new System.Drawing.Size(242, 48);
+            this.browseDirectoryDropDown.Size = new System.Drawing.Size(206, 26);
             // 
             // addPictureToSlideshowToolStripMenuItem
             // 
             this.addPictureToSlideshowToolStripMenuItem.Name = "addPictureToSlideshowToolStripMenuItem";
-            this.addPictureToSlideshowToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.addPictureToSlideshowToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.addPictureToSlideshowToolStripMenuItem.Text = "Add picture to slideshow";
             this.addPictureToSlideshowToolStripMenuItem.Click += new System.EventHandler(this.addPictureToSlideshowToolStripMenuItem_Click);
-            // 
-            // removePictureFromSlideshowToolStripMenuItem
-            // 
-            this.removePictureFromSlideshowToolStripMenuItem.Name = "removePictureFromSlideshowToolStripMenuItem";
-            this.removePictureFromSlideshowToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.removePictureFromSlideshowToolStripMenuItem.Text = "Remove picture from slideshow";
             // 
             // button2
             // 
@@ -247,7 +239,7 @@
             this.transitionSettingsToolStripMenuItem,
             this.slideDurationToolStripMenuItem});
             this.slideshowDropDown.Name = "slideshowDropDown";
-            this.slideshowDropDown.Size = new System.Drawing.Size(235, 92);
+            this.slideshowDropDown.Size = new System.Drawing.Size(235, 114);
             // 
             // swapSlides
             // 
@@ -288,49 +280,43 @@
             // 
             // noneToolStripMenuItem
             // 
-            this.noneToolStripMenuItem.CheckOnClick = true;
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // crossFadeToolStripMenuItem
             // 
-            this.crossFadeToolStripMenuItem.CheckOnClick = true;
             this.crossFadeToolStripMenuItem.Name = "crossFadeToolStripMenuItem";
-            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.crossFadeToolStripMenuItem.Text = "Cross Fade";
             this.crossFadeToolStripMenuItem.Click += new System.EventHandler(this.crossFadeToolStripMenuItem_Click);
             // 
             // wipeUpToolStripMenuItem
             // 
-            this.wipeUpToolStripMenuItem.CheckOnClick = true;
             this.wipeUpToolStripMenuItem.Name = "wipeUpToolStripMenuItem";
-            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeUpToolStripMenuItem.Text = "Wipe Up";
             this.wipeUpToolStripMenuItem.Click += new System.EventHandler(this.wipeUpToolStripMenuItem_Click);
             // 
             // wipeDownToolStripMenuItem
             // 
-            this.wipeDownToolStripMenuItem.CheckOnClick = true;
             this.wipeDownToolStripMenuItem.Name = "wipeDownToolStripMenuItem";
-            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeDownToolStripMenuItem.Text = "Wipe Down";
             this.wipeDownToolStripMenuItem.Click += new System.EventHandler(this.wipeDownToolStripMenuItem_Click);
             // 
             // wipeLeftToolStripMenuItem
             // 
-            this.wipeLeftToolStripMenuItem.CheckOnClick = true;
             this.wipeLeftToolStripMenuItem.Name = "wipeLeftToolStripMenuItem";
-            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeLeftToolStripMenuItem.Text = "Wipe Left";
             this.wipeLeftToolStripMenuItem.Click += new System.EventHandler(this.wipeLeftToolStripMenuItem_Click);
             // 
             // wipeRightToolStripMenuItem
             // 
-            this.wipeRightToolStripMenuItem.CheckOnClick = true;
             this.wipeRightToolStripMenuItem.Name = "wipeRightToolStripMenuItem";
-            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wipeRightToolStripMenuItem.Text = "Wipe Right";
             this.wipeRightToolStripMenuItem.Click += new System.EventHandler(this.wipeRightToolStripMenuItem_Click);
             // 
@@ -348,41 +334,36 @@
             // 
             // transitionTime1Sec
             // 
-            this.transitionTime1Sec.CheckOnClick = true;
             this.transitionTime1Sec.Name = "transitionTime1Sec";
-            this.transitionTime1Sec.Size = new System.Drawing.Size(80, 22);
+            this.transitionTime1Sec.Size = new System.Drawing.Size(180, 22);
             this.transitionTime1Sec.Text = "1";
             this.transitionTime1Sec.Click += new System.EventHandler(this.transitionTime1Sec_Click);
             // 
             // transitionTime2Secs
             // 
-            this.transitionTime2Secs.CheckOnClick = true;
             this.transitionTime2Secs.Name = "transitionTime2Secs";
-            this.transitionTime2Secs.Size = new System.Drawing.Size(80, 22);
+            this.transitionTime2Secs.Size = new System.Drawing.Size(180, 22);
             this.transitionTime2Secs.Text = "2";
             this.transitionTime2Secs.Click += new System.EventHandler(this.transitionTime2Secs_Click);
             // 
             // transitionTime3Secs
             // 
-            this.transitionTime3Secs.CheckOnClick = true;
             this.transitionTime3Secs.Name = "transitionTime3Secs";
-            this.transitionTime3Secs.Size = new System.Drawing.Size(80, 22);
+            this.transitionTime3Secs.Size = new System.Drawing.Size(180, 22);
             this.transitionTime3Secs.Text = "3";
             this.transitionTime3Secs.Click += new System.EventHandler(this.transitionTime3Secs_Click);
             // 
             // transitionTime4Secs
             // 
-            this.transitionTime4Secs.CheckOnClick = true;
             this.transitionTime4Secs.Name = "transitionTime4Secs";
-            this.transitionTime4Secs.Size = new System.Drawing.Size(80, 22);
+            this.transitionTime4Secs.Size = new System.Drawing.Size(180, 22);
             this.transitionTime4Secs.Text = "4";
             this.transitionTime4Secs.Click += new System.EventHandler(this.transitionTime4Secs_Click);
             // 
             // transitionTime5Secs
             // 
-            this.transitionTime5Secs.CheckOnClick = true;
             this.transitionTime5Secs.Name = "transitionTime5Secs";
-            this.transitionTime5Secs.Size = new System.Drawing.Size(80, 22);
+            this.transitionTime5Secs.Size = new System.Drawing.Size(180, 22);
             this.transitionTime5Secs.Text = "5";
             this.transitionTime5Secs.Click += new System.EventHandler(this.transitionTime5Secs_Click);
             // 
@@ -401,49 +382,43 @@
             // 
             // slideDuration5Secs
             // 
-            this.slideDuration5Secs.CheckOnClick = true;
             this.slideDuration5Secs.Name = "slideDuration5Secs";
-            this.slideDuration5Secs.Size = new System.Drawing.Size(86, 22);
+            this.slideDuration5Secs.Size = new System.Drawing.Size(180, 22);
             this.slideDuration5Secs.Text = "5";
             this.slideDuration5Secs.Click += new System.EventHandler(this.slideDuration5Secs_Click);
             // 
             // slideDuration10Secs
             // 
-            this.slideDuration10Secs.CheckOnClick = true;
             this.slideDuration10Secs.Name = "slideDuration10Secs";
-            this.slideDuration10Secs.Size = new System.Drawing.Size(86, 22);
+            this.slideDuration10Secs.Size = new System.Drawing.Size(180, 22);
             this.slideDuration10Secs.Text = "10";
             this.slideDuration10Secs.Click += new System.EventHandler(this.slideDuration10Secs_Click);
             // 
             // slideDuration15Secs
             // 
-            this.slideDuration15Secs.CheckOnClick = true;
             this.slideDuration15Secs.Name = "slideDuration15Secs";
-            this.slideDuration15Secs.Size = new System.Drawing.Size(86, 22);
+            this.slideDuration15Secs.Size = new System.Drawing.Size(180, 22);
             this.slideDuration15Secs.Text = "15";
             this.slideDuration15Secs.Click += new System.EventHandler(this.slideDuration15Secs_Click);
             // 
             // slideDuration20Secs
             // 
-            this.slideDuration20Secs.CheckOnClick = true;
             this.slideDuration20Secs.Name = "slideDuration20Secs";
-            this.slideDuration20Secs.Size = new System.Drawing.Size(86, 22);
+            this.slideDuration20Secs.Size = new System.Drawing.Size(180, 22);
             this.slideDuration20Secs.Text = "20";
             this.slideDuration20Secs.Click += new System.EventHandler(this.slideDuration20Secs_Click);
             // 
             // slideDuration25Secs
             // 
-            this.slideDuration25Secs.CheckOnClick = true;
             this.slideDuration25Secs.Name = "slideDuration25Secs";
-            this.slideDuration25Secs.Size = new System.Drawing.Size(86, 22);
+            this.slideDuration25Secs.Size = new System.Drawing.Size(180, 22);
             this.slideDuration25Secs.Text = "25";
             this.slideDuration25Secs.Click += new System.EventHandler(this.slideDuration25Secs_Click);
             // 
             // slideDuration30Secs
             // 
-            this.slideDuration30Secs.CheckOnClick = true;
             this.slideDuration30Secs.Name = "slideDuration30Secs";
-            this.slideDuration30Secs.Size = new System.Drawing.Size(86, 22);
+            this.slideDuration30Secs.Size = new System.Drawing.Size(180, 22);
             this.slideDuration30Secs.Text = "30";
             this.slideDuration30Secs.Click += new System.EventHandler(this.slideDuration30Secs_Click);
             // 
@@ -798,7 +773,6 @@
         private System.Windows.Forms.FlowLayoutPanel slideLayoutPanel;
         private System.Windows.Forms.ContextMenuStrip browseDirectoryDropDown;
         private System.Windows.Forms.ToolStripMenuItem addPictureToSlideshowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removePictureFromSlideshowToolStripMenuItem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip slideshowDropDown;
