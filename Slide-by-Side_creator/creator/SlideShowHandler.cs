@@ -185,6 +185,7 @@ namespace formNamespace
         {   //make new track
             SoundTrack soundTrack = new SoundTrack();
             //set its path name
+
             soundTrack.Path = path;
 
             //open sound file to get duration
@@ -202,7 +203,7 @@ namespace formNamespace
             //Set the duration of the track object
             if (soundTrackPlayer.NaturalDuration.HasTimeSpan == true)
             {
-                soundTrack.Duration = soundTrackPlayer.NaturalDuration.TimeSpan.Seconds; //get duration in seconds
+                soundTrack.Duration = (int)(soundTrackPlayer.NaturalDuration.TimeSpan.TotalSeconds); //get duration in seconds
                 soundTrackPlayer.Close();
             }
             else

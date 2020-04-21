@@ -13,6 +13,9 @@ using System.Timers;
 using System.Windows.Media;
 using System.Threading;
 using System.Windows.Threading;
+using NAudio;
+using AxWMPLib;
+using WMPLib;
 
 namespace formNamespace
 {
@@ -51,6 +54,7 @@ namespace formNamespace
         private string instructionText = " Welcome to SlidebySide Creator!"+
             "\n\nPlease start by importing images and soundtracks using the buttons to the left!";
         private string saveFileLocation;
+        private int showDuration = 0;
 
         public Form1()
         {
@@ -567,7 +571,9 @@ namespace formNamespace
                     if (!AvailSoundTrackListBox.Items.Contains(aiffTrack))
                     {
                         //make new sound track objects for each .aiff 
+                        //convert them to wav
                         //and add to the soundtrack list
+
                         sh.createSoundTrack(aiffTrack);
                     }
                 }
@@ -664,6 +670,9 @@ namespace formNamespace
                     if(bgw.CancellationPending == true)
                     {
                         e.Cancel = true;
+                        timeElapsed = 0;
+                        currentTime = 0;
+                        bgw.ReportProgress(timeElapsed + currentTime);
                         return;
                     }
                 }
@@ -755,7 +764,20 @@ namespace formNamespace
 
             // Add selected track to slideshow
             SoundTrack selectedTrack = sh.ImportedSoundTrackList.Find(x => x.Path.Contains(tmp));
+
+            //if the soundtrack was an aiff, convert to wav behind scenes before adding to show
+            if (selectedTrack.Path.Contains(".aiff"))
+            {
+                string folderPath = Path.GetDirectoryName(selectedTrack.Path);
+                string wavTrack = Path.Combine(folderPath, Path.GetFileNameWithoutExtension(selectedTrack.Path) + ".wav");
+                ConvertAiffToWav(selectedTrack.Path, wavTrack);
+                selectedTrack.Path = wavTrack;
+            }
+
             sh.addSoundTrackToSlideshow(selectedTrack);
+
+            //update duration of show
+            showDuration = showDuration + selectedTrack.Duration;
 
             //update panel
             updateMusicPanel();
@@ -788,6 +810,8 @@ namespace formNamespace
                         // Remove selected track to slideshow
                         SoundTrack selectedTrack = sh.SlideshowSoundTrackList.Find(x => x.Path.Contains(path));
                         sh.removeSoundTrackFromSlideshow(selectedTrack);
+                        //update duration of show
+                        showDuration = showDuration - selectedTrack.Duration;
                     }
 
                 }
@@ -801,29 +825,32 @@ namespace formNamespace
         {
             //clear panel before redraw
             musicLayoutPanel.Controls.Clear();
-
             foreach(SoundTrack track in sh.SlideshowSoundTrackList)
             {
                 //build new panel
                 Panel newSoundTrackPanel = new Panel();
                 CheckBox newSoundTrackBox = new CheckBox();
                 newSoundTrackBox.AutoSize = true;
-                //newSoundTrackBox.Width = newSoundTrackPanel.Width - 5;
-                newSoundTrackBox.Text = track.Path;
+                newSoundTrackBox.Font = new Font("Arial Black", 9);
+                string trackName = Path.GetFileNameWithoutExtension(track.Path);
+                newSoundTrackBox.Text = trackName;
                 newSoundTrackPanel.Controls.Add(newSoundTrackBox);
                 musicLayoutPanel.Controls.Add(newSoundTrackPanel);
-
-
-                foreach (Panel panel in musicLayoutPanel.Controls)
-                {
-                    //format each panel
-
-                    panel.BackColor = System.Drawing.Color.LightGreen;
-                    panel.Width = (musicLayoutPanel.Width - 5) / musicLayoutPanel.Controls.Count - 5;
-                    panel.Height = musicLayoutPanel.Height - 5;
-                }
             }
+            //Iterator for trackLength percentages
+            int trackLengthIterator = 0;
+            foreach (Panel panel in musicLayoutPanel.Controls)
+            {
+                //format each panel
+                //Handle division based on time of each track
 
+                panel.BackColor = System.Drawing.Color.LightGreen;
+                //panel.Width = (musicLayoutPanel.Width - 5) / musicLayoutPanel.Controls.Count - 5;
+                double percentage = (double)(sh.SlideshowSoundTrackList.ElementAt(trackLengthIterator).Duration) / (double)(showDuration);
+                panel.Width = (int)(percentage * ((double)musicLayoutPanel.Width - 5)) - 6;
+                panel.Height = musicLayoutPanel.Height - 5;
+                trackLengthIterator += 1;
+            }
             //Update Panel with new drawn panels based on current list
             musicLayoutPanel.Update();
         }
@@ -915,7 +942,7 @@ namespace formNamespace
             en.WriteSoundTracksToFile(sh.SlideshowSoundTrackList, saveFileLocation);
 
             //write slides to file 
-            en.WriteSlidesToFile(sh.slideList, saveFileLocation);
+            en.WriteSlidesToFile(sh.SlideshowSlideList, saveFileLocation);
 
             //Update the user 
             instructionsTextBox.Text = "Your project was saved here:\n" + saveFileLocation +
@@ -960,6 +987,23 @@ namespace formNamespace
         private void instructionsTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public static void ConvertAiffToWav(string aiffFile, string wavFile)
+        {
+            using (NAudio.Wave.AiffFileReader reader = new NAudio.Wave.AiffFileReader(aiffFile))
+            {
+                using (NAudio.Wave.WaveFileWriter writer = new NAudio.Wave.WaveFileWriter(wavFile, reader.WaveFormat))
+                {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead = 0;
+                    do
+                    {
+                        bytesRead = reader.Read(buffer, 0, buffer.Length);
+                        writer.Write(buffer, 0, bytesRead);
+                    } while (bytesRead > 0);
+                }
+            }
         }
     }
 }
