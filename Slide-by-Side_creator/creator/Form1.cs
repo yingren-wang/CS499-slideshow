@@ -106,7 +106,7 @@ namespace formNamespace
                 pb.Image = new Bitmap(image);                   // apply the image to the picturebox
                 pb.ImageLocation = image;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
-
+                
                 thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
                 sh.createSlide(image);
             }
@@ -177,6 +177,54 @@ namespace formNamespace
             }
         }
 
+        private void updateTextBoxes()
+        {
+            PictureBox selected = selectedImages[0];
+            var tmp = selected.ImageLocation;           // get the path of the image of the picturebox
+
+            Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));     // find the instance of it in the slide list
+
+            /**
+             * 
+             *  none,
+            wipeLeft,
+            wipeRight,
+            wipeUp,
+            wipeDown,
+            crossFade
+             */
+             //Update the text box for the transition type
+             switch (selectedSlide.transitionType)
+             {
+                case 0:
+                    transitionTypeTextBox.Text = "None";
+                    break;
+                case 1:
+                    transitionTypeTextBox.Text = "Wipe Left";
+                    break;
+                case 2:
+                    transitionTypeTextBox.Text = "Wipe Right";
+                    break;
+                case 3:
+                    transitionTypeTextBox.Text = "Wipe Up";
+                    break;
+                case 4:
+                    transitionTypeTextBox.Text = "Wipe Down";
+                    break;
+                case 5:
+                    transitionTypeTextBox.Text = "Cross Fade";
+                    break;
+                default:
+                    transitionTypeTextBox.Text = "None";
+                    break;
+             }
+
+            //Update transition time textbox
+            transitionTimeTextBox.Text = selectedSlide.TransitionTime.ToString();
+            //Update Slide Duration textbox
+            slideDurationTextBox.Text = selectedSlide.Duration.ToString();
+        }
+
 
         private void pb_Click(object sender, EventArgs e)
         {
@@ -193,6 +241,7 @@ namespace formNamespace
                 selectedImages.Clear();
                 PictureBox item = (PictureBox)sender;
                 selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
+                updateTextBoxes();
                 var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
                 slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
             }

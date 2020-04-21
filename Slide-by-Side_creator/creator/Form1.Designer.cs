@@ -78,22 +78,25 @@
             this.AddTrackToShow_Button = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.slideDurationLabel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.transitionTypeLabel = new System.Windows.Forms.Button();
             this.SwapTracksButton = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button3 = new System.Windows.Forms.Button();
+            this.transitionTimeLabel = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.instructionsTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.instructionsTextBox = new System.Windows.Forms.RichTextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.saveTextBox = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.transitionTypeTextBox = new System.Windows.Forms.TextBox();
+            this.transitionTimeTextBox = new System.Windows.Forms.TextBox();
+            this.slideDurationTextBox = new System.Windows.Forms.TextBox();
             this.browseDirectoryDropDown.SuspendLayout();
             this.slideshowDropDown.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -184,7 +187,7 @@
             this.slideLayoutPanel.Location = new System.Drawing.Point(65, 474);
             this.slideLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.slideLayoutPanel.Name = "slideLayoutPanel";
-            this.slideLayoutPanel.Size = new System.Drawing.Size(1072, 78);
+            this.slideLayoutPanel.Size = new System.Drawing.Size(920, 78);
             this.slideLayoutPanel.TabIndex = 14;
             this.slideLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.slideLayoutPanel_Paint);
             // 
@@ -287,7 +290,7 @@
             // 
             this.noneToolStripMenuItem.CheckOnClick = true;
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
@@ -295,7 +298,7 @@
             // 
             this.crossFadeToolStripMenuItem.CheckOnClick = true;
             this.crossFadeToolStripMenuItem.Name = "crossFadeToolStripMenuItem";
-            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.crossFadeToolStripMenuItem.Text = "Cross Fade";
             this.crossFadeToolStripMenuItem.Click += new System.EventHandler(this.crossFadeToolStripMenuItem_Click);
             // 
@@ -303,7 +306,7 @@
             // 
             this.wipeUpToolStripMenuItem.CheckOnClick = true;
             this.wipeUpToolStripMenuItem.Name = "wipeUpToolStripMenuItem";
-            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeUpToolStripMenuItem.Text = "Wipe Up";
             this.wipeUpToolStripMenuItem.Click += new System.EventHandler(this.wipeUpToolStripMenuItem_Click);
             // 
@@ -311,7 +314,7 @@
             // 
             this.wipeDownToolStripMenuItem.CheckOnClick = true;
             this.wipeDownToolStripMenuItem.Name = "wipeDownToolStripMenuItem";
-            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeDownToolStripMenuItem.Text = "Wipe Down";
             this.wipeDownToolStripMenuItem.Click += new System.EventHandler(this.wipeDownToolStripMenuItem_Click);
             // 
@@ -319,7 +322,7 @@
             // 
             this.wipeLeftToolStripMenuItem.CheckOnClick = true;
             this.wipeLeftToolStripMenuItem.Name = "wipeLeftToolStripMenuItem";
-            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeLeftToolStripMenuItem.Text = "Wipe Left";
             this.wipeLeftToolStripMenuItem.Click += new System.EventHandler(this.wipeLeftToolStripMenuItem_Click);
             // 
@@ -327,7 +330,7 @@
             // 
             this.wipeRightToolStripMenuItem.CheckOnClick = true;
             this.wipeRightToolStripMenuItem.Name = "wipeRightToolStripMenuItem";
-            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeRightToolStripMenuItem.Text = "Wipe Right";
             this.wipeRightToolStripMenuItem.Click += new System.EventHandler(this.wipeRightToolStripMenuItem_Click);
             // 
@@ -345,56 +348,43 @@
             // 
             // transitionTime1Sec
             // 
-
             this.transitionTime1Sec.CheckOnClick = true;
             this.transitionTime1Sec.Name = "transitionTime1Sec";
-            this.transitionTime1Sec.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime1Sec.Size = new System.Drawing.Size(80, 22);
             this.transitionTime1Sec.Text = "1";
             this.transitionTime1Sec.Click += new System.EventHandler(this.transitionTime1Sec_Click);
-
-            
             // 
             // transitionTime2Secs
             // 
-
             this.transitionTime2Secs.CheckOnClick = true;
             this.transitionTime2Secs.Name = "transitionTime2Secs";
-            this.transitionTime2Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime2Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime2Secs.Text = "2";
             this.transitionTime2Secs.Click += new System.EventHandler(this.transitionTime2Secs_Click);
-
             // 
             // transitionTime3Secs
             // 
-
             this.transitionTime3Secs.CheckOnClick = true;
             this.transitionTime3Secs.Name = "transitionTime3Secs";
-            this.transitionTime3Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime3Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime3Secs.Text = "3";
             this.transitionTime3Secs.Click += new System.EventHandler(this.transitionTime3Secs_Click);
-
             // 
             // transitionTime4Secs
             // 
-
             this.transitionTime4Secs.CheckOnClick = true;
             this.transitionTime4Secs.Name = "transitionTime4Secs";
-            this.transitionTime4Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime4Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime4Secs.Text = "4";
             this.transitionTime4Secs.Click += new System.EventHandler(this.transitionTime4Secs_Click);
-
-            
             // 
             // transitionTime5Secs
             // 
-
             this.transitionTime5Secs.CheckOnClick = true;
             this.transitionTime5Secs.Name = "transitionTime5Secs";
-            this.transitionTime5Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime5Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime5Secs.Text = "5";
             this.transitionTime5Secs.Click += new System.EventHandler(this.transitionTime5Secs_Click);
-
-            
             // 
             // slideDurationToolStripMenuItem
             // 
@@ -411,63 +401,51 @@
             // 
             // slideDuration5Secs
             // 
-
             this.slideDuration5Secs.CheckOnClick = true;
             this.slideDuration5Secs.Name = "slideDuration5Secs";
             this.slideDuration5Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration5Secs.Text = "5";
             this.slideDuration5Secs.Click += new System.EventHandler(this.slideDuration5Secs_Click);
-
             // 
             // slideDuration10Secs
             // 
-
             this.slideDuration10Secs.CheckOnClick = true;
             this.slideDuration10Secs.Name = "slideDuration10Secs";
             this.slideDuration10Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration10Secs.Text = "10";
             this.slideDuration10Secs.Click += new System.EventHandler(this.slideDuration10Secs_Click);
-
             // 
             // slideDuration15Secs
             // 
-
             this.slideDuration15Secs.CheckOnClick = true;
             this.slideDuration15Secs.Name = "slideDuration15Secs";
             this.slideDuration15Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration15Secs.Text = "15";
             this.slideDuration15Secs.Click += new System.EventHandler(this.slideDuration15Secs_Click);
-
             // 
             // slideDuration20Secs
             // 
-
             this.slideDuration20Secs.CheckOnClick = true;
             this.slideDuration20Secs.Name = "slideDuration20Secs";
             this.slideDuration20Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration20Secs.Text = "20";
             this.slideDuration20Secs.Click += new System.EventHandler(this.slideDuration20Secs_Click);
-
             // 
             // slideDuration25Secs
             // 
-
             this.slideDuration25Secs.CheckOnClick = true;
             this.slideDuration25Secs.Name = "slideDuration25Secs";
             this.slideDuration25Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration25Secs.Text = "25";
             this.slideDuration25Secs.Click += new System.EventHandler(this.slideDuration25Secs_Click);
-
             // 
             // slideDuration30Secs
             // 
-
             this.slideDuration30Secs.CheckOnClick = true;
             this.slideDuration30Secs.Name = "slideDuration30Secs";
             this.slideDuration30Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration30Secs.Text = "30";
             this.slideDuration30Secs.Click += new System.EventHandler(this.slideDuration30Secs_Click);
-
             // 
             // AvailableSoundtracksPanel
             // 
@@ -563,18 +541,18 @@
             this.label4.Text = "IMPORTED IMAGES DIRECTORY:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // button6
+            // slideDurationLabel
             // 
-            this.button6.BackColor = System.Drawing.Color.DimGray;
-            this.button6.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(1142, 531);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(119, 21);
-            this.button6.TabIndex = 24;
-            this.button6.Text = "TEST IMAGES";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.slideDurationLabel.BackColor = System.Drawing.Color.DimGray;
+            this.slideDurationLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.slideDurationLabel.ForeColor = System.Drawing.Color.White;
+            this.slideDurationLabel.Location = new System.Drawing.Point(989, 523);
+            this.slideDurationLabel.Name = "slideDurationLabel";
+            this.slideDurationLabel.Size = new System.Drawing.Size(148, 29);
+            this.slideDurationLabel.TabIndex = 24;
+            this.slideDurationLabel.Text = "SLIDE DURATION";
+            this.slideDurationLabel.UseVisualStyleBackColor = false;
+            this.slideDurationLabel.Click += new System.EventHandler(this.button6_Click);
             // 
             // panel1
             // 
@@ -595,17 +573,17 @@
             this.panel1.Size = new System.Drawing.Size(877, 339);
             this.panel1.TabIndex = 25;
             // 
-            // button7
+            // transitionTypeLabel
             // 
-            this.button7.BackColor = System.Drawing.Color.Silver;
-            this.button7.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(1142, 474);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 38);
-            this.button7.TabIndex = 26;
-            this.button7.Text = "SWAP IMAGES";
-            this.button7.UseVisualStyleBackColor = false;
+            this.transitionTypeLabel.BackColor = System.Drawing.Color.Silver;
+            this.transitionTypeLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transitionTypeLabel.ForeColor = System.Drawing.Color.White;
+            this.transitionTypeLabel.Location = new System.Drawing.Point(989, 474);
+            this.transitionTypeLabel.Name = "transitionTypeLabel";
+            this.transitionTypeLabel.Size = new System.Drawing.Size(148, 28);
+            this.transitionTypeLabel.TabIndex = 26;
+            this.transitionTypeLabel.Text = "TRANSITION TYPE";
+            this.transitionTypeLabel.UseVisualStyleBackColor = false;
             // 
             // SwapTracksButton
             // 
@@ -620,17 +598,17 @@
             this.SwapTracksButton.UseVisualStyleBackColor = false;
             this.SwapTracksButton.Click += new System.EventHandler(this.SwapTracksButton_Click);
             // 
-            // button3
+            // transitionTimeLabel
             // 
-            this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(1142, 505);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 29);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "REMOVE IMAGE";
-            this.button3.UseVisualStyleBackColor = false;
+            this.transitionTimeLabel.BackColor = System.Drawing.Color.Gray;
+            this.transitionTimeLabel.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transitionTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.transitionTimeLabel.Location = new System.Drawing.Point(989, 500);
+            this.transitionTimeLabel.Name = "transitionTimeLabel";
+            this.transitionTimeLabel.Size = new System.Drawing.Size(148, 24);
+            this.transitionTimeLabel.TabIndex = 28;
+            this.transitionTimeLabel.Text = "TRANSITION TIME";
+            this.transitionTimeLabel.UseVisualStyleBackColor = false;
             // 
             // RemoveButton
             // 
@@ -683,6 +661,27 @@
             this.panel5.Size = new System.Drawing.Size(294, 141);
             this.panel5.TabIndex = 32;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(84, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 18);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "INSTRUCTIONS";
+            // 
+            // instructionsTextBox
+            // 
+            this.instructionsTextBox.BackColor = System.Drawing.Color.Black;
+            this.instructionsTextBox.ForeColor = System.Drawing.Color.Lime;
+            this.instructionsTextBox.Location = new System.Drawing.Point(3, 25);
+            this.instructionsTextBox.Name = "instructionsTextBox";
+            this.instructionsTextBox.Size = new System.Drawing.Size(288, 113);
+            this.instructionsTextBox.TabIndex = 0;
+            this.instructionsTextBox.Text = "";
+            this.instructionsTextBox.TextChanged += new System.EventHandler(this.instructionsTextBox_TextChanged);
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DimGray;
@@ -696,26 +695,15 @@
             this.panel6.Size = new System.Drawing.Size(292, 192);
             this.panel6.TabIndex = 22;
             // 
-            // instructionsTextBox
+            // saveTextBox
             // 
-            this.instructionsTextBox.BackColor = System.Drawing.Color.Black;
-            this.instructionsTextBox.ForeColor = System.Drawing.Color.Lime;
-            this.instructionsTextBox.Location = new System.Drawing.Point(3, 25);
-            this.instructionsTextBox.Name = "instructionsTextBox";
-            this.instructionsTextBox.Size = new System.Drawing.Size(288, 113);
-            this.instructionsTextBox.TabIndex = 0;
-            this.instructionsTextBox.Text = "";
-            this.instructionsTextBox.TextChanged += new System.EventHandler(this.instructionsTextBox_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(84, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "INSTRUCTIONS";
+            this.saveTextBox.BackColor = System.Drawing.Color.Black;
+            this.saveTextBox.ForeColor = System.Drawing.Color.Lime;
+            this.saveTextBox.Location = new System.Drawing.Point(4, 31);
+            this.saveTextBox.Name = "saveTextBox";
+            this.saveTextBox.Size = new System.Drawing.Size(278, 73);
+            this.saveTextBox.TabIndex = 27;
+            this.saveTextBox.Text = "";
             // 
             // label6
             // 
@@ -728,15 +716,29 @@
             this.label6.Text = "PRODUCE YOUR PROJECT";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // saveTextBox
+            // transitionTypeTextBox
             // 
-            this.saveTextBox.BackColor = System.Drawing.Color.Black;
-            this.saveTextBox.ForeColor = System.Drawing.Color.Lime;
-            this.saveTextBox.Location = new System.Drawing.Point(4, 31);
-            this.saveTextBox.Name = "saveTextBox";
-            this.saveTextBox.Size = new System.Drawing.Size(278, 73);
-            this.saveTextBox.TabIndex = 27;
-            this.saveTextBox.Text = "";
+            this.transitionTypeTextBox.Location = new System.Drawing.Point(1145, 474);
+            this.transitionTypeTextBox.Name = "transitionTypeTextBox";
+            this.transitionTypeTextBox.ReadOnly = true;
+            this.transitionTypeTextBox.Size = new System.Drawing.Size(108, 20);
+            this.transitionTypeTextBox.TabIndex = 33;
+            // 
+            // transitionTimeTextBox
+            // 
+            this.transitionTimeTextBox.Location = new System.Drawing.Point(1145, 500);
+            this.transitionTimeTextBox.Name = "transitionTimeTextBox";
+            this.transitionTimeTextBox.ReadOnly = true;
+            this.transitionTimeTextBox.Size = new System.Drawing.Size(108, 20);
+            this.transitionTimeTextBox.TabIndex = 34;
+            // 
+            // slideDurationTextBox
+            // 
+            this.slideDurationTextBox.Location = new System.Drawing.Point(1145, 528);
+            this.slideDurationTextBox.Name = "slideDurationTextBox";
+            this.slideDurationTextBox.ReadOnly = true;
+            this.slideDurationTextBox.Size = new System.Drawing.Size(108, 20);
+            this.slideDurationTextBox.TabIndex = 35;
             // 
             // Form1
             // 
@@ -744,17 +746,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1265, 666);
+            this.Controls.Add(this.slideDurationTextBox);
+            this.Controls.Add(this.transitionTimeTextBox);
+            this.Controls.Add(this.transitionTypeTextBox);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.RemoveButton);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.transitionTimeLabel);
             this.Controls.Add(this.SwapTracksButton);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.transitionTypeLabel);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.slideDurationLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -828,12 +833,12 @@
         private System.Windows.Forms.Button AddTrackToShow_Button;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button slideDurationLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button transitionTypeLabel;
         private System.Windows.Forms.Button SwapTracksButton;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button transitionTimeLabel;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -844,6 +849,9 @@
         private System.Windows.Forms.RichTextBox instructionsTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RichTextBox saveTextBox;
+        private System.Windows.Forms.TextBox transitionTypeTextBox;
+        private System.Windows.Forms.TextBox transitionTimeTextBox;
+        private System.Windows.Forms.TextBox slideDurationTextBox;
     }
 }
 
