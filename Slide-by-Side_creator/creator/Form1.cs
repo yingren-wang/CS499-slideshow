@@ -165,6 +165,10 @@ namespace formNamespace
         {
             //clear panel before redraw
             slideLayoutPanel.Controls.Clear();
+            //Clear text box properties
+            transitionTypeTextBox.Text = "";
+            transitionTimeTextBox.Text = "";
+            slideDurationTextBox.Text = "";
 
             foreach (Slide slide in sh.SlideshowSlideList)
             {
@@ -347,6 +351,7 @@ namespace formNamespace
             //Set up a string to trigger the right case in changeSlideTransition's switch statement.
             string transitionSetting = "None";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -360,6 +365,7 @@ namespace formNamespace
 
             string transitionSetting = "Cross Fade";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -373,6 +379,7 @@ namespace formNamespace
 
             string transitionSetting = "Wipe Up";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -386,6 +393,7 @@ namespace formNamespace
 
             string transitionSetting = "Wipe Down";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -399,6 +407,7 @@ namespace formNamespace
 
             string transitionSetting = "Wipe Left";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -412,6 +421,7 @@ namespace formNamespace
 
             string transitionSetting = "Wipe Right";
             sh.changeSlideTransition(selectedSlide, transitionSetting);
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -425,6 +435,7 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 5;
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -436,6 +447,7 @@ namespace formNamespace
             int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 10;
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -447,6 +459,7 @@ namespace formNamespace
             int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 15;
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -458,6 +471,7 @@ namespace formNamespace
             int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 20;
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -469,6 +483,7 @@ namespace formNamespace
             int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 25;
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -480,6 +495,7 @@ namespace formNamespace
             int listIndex = sh.SlideshowSlideList.FindIndex(x => x.Path.Contains(tmp));
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.Duration = 30;
+            updateTextBoxes();
             selectedImages.Clear();
         }
 
@@ -493,6 +509,7 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 1;
+            updateTextBoxes();
         }
 
         private void transitionTime2Secs_Click(object sender, EventArgs e)
@@ -502,6 +519,7 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 2;
+            updateTextBoxes();
         }
 
         private void transitionTime3Secs_Click(object sender, EventArgs e)
@@ -511,6 +529,7 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 3;
+            updateTextBoxes();
         }
 
         private void transitionTime4Secs_Click(object sender, EventArgs e)
@@ -520,6 +539,7 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 4;
+            updateTextBoxes();
         }
 
         private void transitionTime5Secs_Click(object sender, EventArgs e)
@@ -529,6 +549,7 @@ namespace formNamespace
 
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 5;
+            updateTextBoxes();
         }
 
         private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
