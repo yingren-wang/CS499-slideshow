@@ -219,8 +219,38 @@ namespace formNamespace
         // Add soundtrack to show
         public void addSoundTrackToSlideshow(SoundTrack track)
         {
+            //Re-open track and ensure correct duration before adding to timeline
+
+            SoundTrack newShowTrack = track;
+            //set its path name
+
+            newShowTrack.Path = track.Path;
+
+            //open sound file to get duration
+            soundTrackPlayer.Open(new Uri(track.Path, UriKind.Relative)); //use path to get duration
+
+            int counter = 0;
+            //NOTE: This wait is to ensure successful opening of sound file
+            //time out if it took more than 2 seconds
+            while ((soundTrackPlayer.NaturalDuration.HasTimeSpan) == false && (counter < 20))
+            {
+                Thread.Sleep(100);
+                counter++;
+            }
+
+            //Set the duration of the track object
+            if (soundTrackPlayer.NaturalDuration.HasTimeSpan == true)
+            {
+                newShowTrack.Duration = (int)(soundTrackPlayer.NaturalDuration.TimeSpan.TotalSeconds); //get duration in seconds
+                soundTrackPlayer.Close();
+            }
+            else
+            {
+                Console.WriteLine("SOUNDTRACK ERROR: COULD NOT SET DURATION ON ADD TO SHOW\n\n");
+            }
+
             //add to organized slideshow list
-            SlideshowSoundTrackList.Add(track);
+            SlideshowSoundTrackList.Add(newShowTrack);
         }
 
         public void removeSoundTrackFromSlideshow(SoundTrack track)
