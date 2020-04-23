@@ -808,7 +808,12 @@ namespace formNamespace
             sh.addSoundTrackToSlideshow(selectedTrack);
 
             //update duration of show
-            showDuration = showDuration + selectedTrack.Duration;
+            //reset duration first
+            showDuration = 0;
+            foreach (SoundTrack x in sh.SlideshowSoundTrackList)
+            {
+                showDuration = showDuration + x.Duration;
+            }
 
             //update panel
             updateMusicPanel();
@@ -822,6 +827,12 @@ namespace formNamespace
             else
             {
                 instructionsTextBox.Text = "Awesome! Be sure to add some images to your timeline as well!";
+            }
+
+            ///DEBUGGING////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            foreach (SoundTrack x in sh.SlideshowSoundTrackList)
+            {
+                Console.WriteLine(x.Duration + "\n\n");
             }
         }
 
