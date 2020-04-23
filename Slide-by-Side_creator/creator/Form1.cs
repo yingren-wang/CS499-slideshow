@@ -241,7 +241,17 @@ namespace formNamespace
                 PictureBox item = (PictureBox)sender;
                 selectedImages.Add(item);
                 //You are clicking the second slide, perform swap functionality
-                swapSlidesFunc();
+                //Error check to make sure you are not clicking on the same slide
+                if(selectedImages[0] != selectedImages[1])
+                {
+                    swapSlidesFunc();
+                }
+                else
+                {
+                    Console.WriteLine("You selected the same image as the one you intially wanted to swap! Swapping mode has been disabled! Please try the swapping mode again, make sure to click on a different image!");
+                    isSwapping = false;
+                    selectedImages.Clear();
+                }
             }
             //Else, normal functionality
             else
