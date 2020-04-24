@@ -791,6 +791,12 @@ namespace formNamespace
         private void AddTrackToShow_Button_click(object sender, EventArgs e)
         {
             //get path of selected music track
+            if(AvailSoundTrackListBox.SelectedItem == null)
+            {
+                instructionsTextBox.Text = "No Tracks Selected";
+                return;
+            }
+   
             var tmp = AvailSoundTrackListBox.SelectedItem.ToString();
 
             // Add selected track to slideshow
@@ -976,6 +982,11 @@ namespace formNamespace
             //call the directory what the user entered
             if (!Directory.Exists(saveFileLocation))
             {
+                if(saveFileLocation == null)
+                {
+                    saveTextBox.Text = "No Folder Selected. Try Again.";
+                    return;
+                }
                 Directory.CreateDirectory(saveFileLocation);
             }
 
