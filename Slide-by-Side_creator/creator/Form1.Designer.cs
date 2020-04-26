@@ -213,7 +213,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 24);
             this.button2.TabIndex = 15;
-            this.button2.Text = "TEST TRACKS";
+            this.button2.Text = "PLAY TRACKS";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Music_Test_Click);
             // 
@@ -239,7 +239,7 @@
             this.transitionSettingsToolStripMenuItem,
             this.slideDurationToolStripMenuItem});
             this.slideshowDropDown.Name = "slideshowDropDown";
-            this.slideshowDropDown.Size = new System.Drawing.Size(235, 114);
+            this.slideshowDropDown.Size = new System.Drawing.Size(235, 92);
             // 
             // swapSlides
             // 
@@ -281,42 +281,42 @@
             // noneToolStripMenuItem
             // 
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // crossFadeToolStripMenuItem
             // 
             this.crossFadeToolStripMenuItem.Name = "crossFadeToolStripMenuItem";
-            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.crossFadeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.crossFadeToolStripMenuItem.Text = "Cross Fade";
             this.crossFadeToolStripMenuItem.Click += new System.EventHandler(this.crossFadeToolStripMenuItem_Click);
             // 
             // wipeUpToolStripMenuItem
             // 
             this.wipeUpToolStripMenuItem.Name = "wipeUpToolStripMenuItem";
-            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeUpToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeUpToolStripMenuItem.Text = "Wipe Up";
             this.wipeUpToolStripMenuItem.Click += new System.EventHandler(this.wipeUpToolStripMenuItem_Click);
             // 
             // wipeDownToolStripMenuItem
             // 
             this.wipeDownToolStripMenuItem.Name = "wipeDownToolStripMenuItem";
-            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeDownToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeDownToolStripMenuItem.Text = "Wipe Down";
             this.wipeDownToolStripMenuItem.Click += new System.EventHandler(this.wipeDownToolStripMenuItem_Click);
             // 
             // wipeLeftToolStripMenuItem
             // 
             this.wipeLeftToolStripMenuItem.Name = "wipeLeftToolStripMenuItem";
-            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeLeftToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeLeftToolStripMenuItem.Text = "Wipe Left";
             this.wipeLeftToolStripMenuItem.Click += new System.EventHandler(this.wipeLeftToolStripMenuItem_Click);
             // 
             // wipeRightToolStripMenuItem
             // 
             this.wipeRightToolStripMenuItem.Name = "wipeRightToolStripMenuItem";
-            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wipeRightToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.wipeRightToolStripMenuItem.Text = "Wipe Right";
             this.wipeRightToolStripMenuItem.Click += new System.EventHandler(this.wipeRightToolStripMenuItem_Click);
             // 
@@ -335,35 +335,35 @@
             // transitionTime1Sec
             // 
             this.transitionTime1Sec.Name = "transitionTime1Sec";
-            this.transitionTime1Sec.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime1Sec.Size = new System.Drawing.Size(80, 22);
             this.transitionTime1Sec.Text = "1";
             this.transitionTime1Sec.Click += new System.EventHandler(this.transitionTime1Sec_Click);
             // 
             // transitionTime2Secs
             // 
             this.transitionTime2Secs.Name = "transitionTime2Secs";
-            this.transitionTime2Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime2Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime2Secs.Text = "2";
             this.transitionTime2Secs.Click += new System.EventHandler(this.transitionTime2Secs_Click);
             // 
             // transitionTime3Secs
             // 
             this.transitionTime3Secs.Name = "transitionTime3Secs";
-            this.transitionTime3Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime3Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime3Secs.Text = "3";
             this.transitionTime3Secs.Click += new System.EventHandler(this.transitionTime3Secs_Click);
             // 
             // transitionTime4Secs
             // 
             this.transitionTime4Secs.Name = "transitionTime4Secs";
-            this.transitionTime4Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime4Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime4Secs.Text = "4";
             this.transitionTime4Secs.Click += new System.EventHandler(this.transitionTime4Secs_Click);
             // 
             // transitionTime5Secs
             // 
             this.transitionTime5Secs.Name = "transitionTime5Secs";
-            this.transitionTime5Secs.Size = new System.Drawing.Size(180, 22);
+            this.transitionTime5Secs.Size = new System.Drawing.Size(80, 22);
             this.transitionTime5Secs.Text = "5";
             this.transitionTime5Secs.Click += new System.EventHandler(this.transitionTime5Secs_Click);
             // 
@@ -383,42 +383,42 @@
             // slideDuration5Secs
             // 
             this.slideDuration5Secs.Name = "slideDuration5Secs";
-            this.slideDuration5Secs.Size = new System.Drawing.Size(180, 22);
+            this.slideDuration5Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration5Secs.Text = "5";
             this.slideDuration5Secs.Click += new System.EventHandler(this.slideDuration5Secs_Click);
             // 
             // slideDuration10Secs
             // 
             this.slideDuration10Secs.Name = "slideDuration10Secs";
-            this.slideDuration10Secs.Size = new System.Drawing.Size(180, 22);
+            this.slideDuration10Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration10Secs.Text = "10";
             this.slideDuration10Secs.Click += new System.EventHandler(this.slideDuration10Secs_Click);
             // 
             // slideDuration15Secs
             // 
             this.slideDuration15Secs.Name = "slideDuration15Secs";
-            this.slideDuration15Secs.Size = new System.Drawing.Size(180, 22);
+            this.slideDuration15Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration15Secs.Text = "15";
             this.slideDuration15Secs.Click += new System.EventHandler(this.slideDuration15Secs_Click);
             // 
             // slideDuration20Secs
             // 
             this.slideDuration20Secs.Name = "slideDuration20Secs";
-            this.slideDuration20Secs.Size = new System.Drawing.Size(180, 22);
+            this.slideDuration20Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration20Secs.Text = "20";
             this.slideDuration20Secs.Click += new System.EventHandler(this.slideDuration20Secs_Click);
             // 
             // slideDuration25Secs
             // 
             this.slideDuration25Secs.Name = "slideDuration25Secs";
-            this.slideDuration25Secs.Size = new System.Drawing.Size(180, 22);
+            this.slideDuration25Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration25Secs.Text = "25";
             this.slideDuration25Secs.Click += new System.EventHandler(this.slideDuration25Secs_Click);
             // 
             // slideDuration30Secs
             // 
             this.slideDuration30Secs.Name = "slideDuration30Secs";
-            this.slideDuration30Secs.Size = new System.Drawing.Size(180, 22);
+            this.slideDuration30Secs.Size = new System.Drawing.Size(86, 22);
             this.slideDuration30Secs.Text = "30";
             this.slideDuration30Secs.Click += new System.EventHandler(this.slideDuration30Secs_Click);
             // 

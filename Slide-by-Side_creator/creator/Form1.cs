@@ -648,6 +648,7 @@ namespace formNamespace
                 }
                 progressBar.Maximum = totalDuration;
                 bgw.RunWorkerAsync();
+                button2.Text = "STOP PLAYING";
             }
             else //currently playing, so stop sequence
             {
@@ -664,6 +665,7 @@ namespace formNamespace
                 // reset duration
                 totalDuration = 0;
                 numTracksToPlay = 0;
+                button2.Text = "PLAY TRACKS";
             }
         }
 
