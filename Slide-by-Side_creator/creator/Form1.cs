@@ -106,7 +106,7 @@ namespace formNamespace
 
                 PictureBox pb = new PictureBox();
                 pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
-
+                pb.BorderStyle = BorderStyle.None;
                 pb.Image = new Bitmap(image);                   // apply the image to the picturebox
                 pb.ImageLocation = image;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
@@ -117,6 +117,7 @@ namespace formNamespace
 
         }
 
+        // dropdown menu for pictureboxes in the preview panel
         private void pb_MouseDown(object sender, MouseEventArgs e)
         {
             PictureBox item = (PictureBox)sender;
@@ -124,6 +125,8 @@ namespace formNamespace
             {
                 case MouseButtons.Right:    // if it was right clicked
                     {
+                        // clicked picture box will be shown as clicked
+                        item.BorderStyle = BorderStyle.Fixed3D;
                         browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
                         selectedImages.Add(item);       // adds the selected image to the selectedImages list
                     }
@@ -150,13 +153,15 @@ namespace formNamespace
                 tmp = selectedImages[1].ImageLocation;
                 Slide secondSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
                 b = sh.SlideshowSlideList.IndexOf(secondSlide);
-
+                selectedImages[0].BorderStyle = BorderStyle.None;
+                selectedImages[1].BorderStyle = BorderStyle.None;
                 //Update list
                 SlideShowHandler.Swap(sh.SlideshowSlideList, a, b);
                 //Update view
                 updateSlideTimeline();
                 //Swap complete; reset flags and clear the selectedSlidelist
                 isSwapping = false;
+                
                 selectedImages.Clear();
             }
         }
@@ -251,6 +256,7 @@ namespace formNamespace
                 selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
                 updateTextBoxes();
                 var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
+                item.BorderStyle = BorderStyle.Fixed3D;
                 slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
             }
         }
@@ -264,6 +270,7 @@ namespace formNamespace
             sh.addSlideToSlideshow(selectedSlide);  // add it to the timeline list
 
             selected.MouseDown -= pb_MouseDown;             // remove the thumbnail right-click menu
+            selected.BorderStyle = BorderStyle.None;
             selected.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
 
             slideLayoutPanel.Controls.Add(selected);    // add it to the timeline flowlayoutpanel
@@ -279,6 +286,8 @@ namespace formNamespace
             {
                 instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
             }
+            // change the picturebox back to not selected once the add button is clicked
+            // selected.BorderStyle = BorderStyle.None;
         }
 
         //Functionality for the swap button
@@ -302,7 +311,7 @@ namespace formNamespace
             {
                 Console.WriteLine("ERROR: THERE ARE TOO MANY ITEMS IN SELECTED IMAGES.\n\n");
             }
-
+            // selectedImages.BorderStyle = BorderStyle.None;
         }
 
         private void removeSlideFromSlideshowToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -320,18 +329,14 @@ namespace formNamespace
             slideLayoutPanel.Controls.Remove(selected);
 
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //This handler simply sets the selected slide so we are dealing with the right slide when changing the settings
         private void transitionSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             //update instructions text
             instructionsTextBox.Text = "Images Successfully Imported! Right click on an image to add it to the timeline";
-
-
-            
         }
 
         //--------------------------
@@ -353,6 +358,7 @@ namespace formNamespace
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //The "Cross Fade" button under Transistion Types
@@ -367,6 +373,7 @@ namespace formNamespace
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //The "Wipe Up" button under Transistion Types
@@ -381,6 +388,7 @@ namespace formNamespace
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //The "Wipe Down" button under Transistion Types
@@ -395,6 +403,7 @@ namespace formNamespace
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //The "Wipe Left" button under Transistion Types
@@ -409,6 +418,7 @@ namespace formNamespace
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //The "Wipe Right" button under Transistion Types
@@ -423,6 +433,7 @@ namespace formNamespace
             sh.changeSlideTransition(selectedSlide, transitionSetting);
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //--------------------------
@@ -437,6 +448,7 @@ namespace formNamespace
             selectedSlide.Duration = 5;
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void slideDuration10Secs_Click(object sender, EventArgs e)
@@ -449,6 +461,7 @@ namespace formNamespace
             selectedSlide.Duration = 10;
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void slideDuration15Secs_Click(object sender, EventArgs e)
@@ -461,6 +474,7 @@ namespace formNamespace
             selectedSlide.Duration = 15;
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void slideDuration20Secs_Click(object sender, EventArgs e)
@@ -473,6 +487,7 @@ namespace formNamespace
             selectedSlide.Duration = 20;
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void slideDuration25Secs_Click(object sender, EventArgs e)
@@ -485,6 +500,7 @@ namespace formNamespace
             selectedSlide.Duration = 25;
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void slideDuration30Secs_Click(object sender, EventArgs e)
@@ -497,6 +513,7 @@ namespace formNamespace
             selectedSlide.Duration = 30;
             updateTextBoxes();
             selectedImages.Clear();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         //--------------------------
@@ -510,6 +527,7 @@ namespace formNamespace
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 1;
             updateTextBoxes();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void transitionTime2Secs_Click(object sender, EventArgs e)
@@ -520,6 +538,7 @@ namespace formNamespace
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 2;
             updateTextBoxes();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void transitionTime3Secs_Click(object sender, EventArgs e)
@@ -530,6 +549,7 @@ namespace formNamespace
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 3;
             updateTextBoxes();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void transitionTime4Secs_Click(object sender, EventArgs e)
@@ -540,6 +560,7 @@ namespace formNamespace
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 4;
             updateTextBoxes();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void transitionTime5Secs_Click(object sender, EventArgs e)
@@ -550,6 +571,7 @@ namespace formNamespace
             Slide selectedSlide = sh.SlideshowSlideList.Find(x => x.Path.Contains(tmp));
             selectedSlide.TransitionTime = 5;
             updateTextBoxes();
+            selected.BorderStyle = BorderStyle.None;
         }
 
         private void slideLayoutPanel_Paint(object sender, PaintEventArgs e)
