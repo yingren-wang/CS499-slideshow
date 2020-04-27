@@ -96,12 +96,16 @@
             this.transitionTypeTextBox = new System.Windows.Forms.TextBox();
             this.transitionTimeTextBox = new System.Windows.Forms.TextBox();
             this.slideDurationTextBox = new System.Windows.Forms.TextBox();
+            this.soundtrackDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeTrackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveTrackToOtherPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browseDirectoryDropDown.SuspendLayout();
             this.slideshowDropDown.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.soundtrackDropDown.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -715,6 +719,26 @@
             this.slideDurationTextBox.Size = new System.Drawing.Size(108, 20);
             this.slideDurationTextBox.TabIndex = 35;
             // 
+            // soundtrackDropDown
+            // 
+            this.soundtrackDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeTrackToolStripMenuItem,
+            this.moveTrackToOtherPositionToolStripMenuItem});
+            this.soundtrackDropDown.Name = "soundtrackDropDown";
+            this.soundtrackDropDown.Size = new System.Drawing.Size(237, 70);
+            // 
+            // removeTrackToolStripMenuItem
+            // 
+            this.removeTrackToolStripMenuItem.Name = "removeTrackToolStripMenuItem";
+            this.removeTrackToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.removeTrackToolStripMenuItem.Text = "Remove Track";
+            // 
+            // moveTrackToOtherPositionToolStripMenuItem
+            // 
+            this.moveTrackToOtherPositionToolStripMenuItem.Name = "moveTrackToOtherPositionToolStripMenuItem";
+            this.moveTrackToOtherPositionToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.moveTrackToOtherPositionToolStripMenuItem.Text = "Move Track to Other Position...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -753,6 +777,7 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.soundtrackDropDown.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -826,6 +851,9 @@
         private System.Windows.Forms.TextBox transitionTypeTextBox;
         private System.Windows.Forms.TextBox transitionTimeTextBox;
         private System.Windows.Forms.TextBox slideDurationTextBox;
+        private System.Windows.Forms.ContextMenuStrip soundtrackDropDown;
+        private System.Windows.Forms.ToolStripMenuItem removeTrackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveTrackToOtherPositionToolStripMenuItem;
     }
 }
 

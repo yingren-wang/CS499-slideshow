@@ -116,7 +116,7 @@ namespace formNamespace
             {
 
                 PictureBox pb = new PictureBox();
-                pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
+                pb.MouseDown += new MouseEventHandler(previewItemMouseEvent);    //Add handler for a dropdown menu on each picture box 
                 pb.BorderStyle = BorderStyle.None;
                 pb.Image = new Bitmap(image);                   // apply the image to the picturebox
                 pb.ImageLocation = image;
@@ -129,11 +129,25 @@ namespace formNamespace
         }
 
         // dropdown menu for pictureboxes in the preview panel
-        private void pb_MouseDown(object sender, MouseEventArgs e)
+        private void previewItemMouseEvent(object sender, MouseEventArgs e)
         {
             PictureBox item = (PictureBox)sender;
             switch (e.Button)
             {
+                case MouseButtons.Left:     // if it was left clicked
+                    {
+                        if (selectedImages.Count != 0) //If there has already been a picture box selected before
+                        {
+                            PictureBox oldPicture = selectedImages[0];
+                            deselectPicture(oldPicture);
+                        }
+                        selectedImages.Clear();
+                        // clicked picture box will be shown as clicked
+                        selectPicture(item);
+                        //browseDirectoryDropDown.Show(item, new Point(e.X, e.Y));    //places the menu at the pointer position
+                        selectedImages.Add(item);       // adds the selected image to the selectedImages list
+                    }
+                    break;
                 case MouseButtons.Right:    // if it was right clicked
                     {
                         if (selectedImages.Count != 0) //If there has already been a picture box selected before
@@ -201,7 +215,7 @@ namespace formNamespace
                 pb.Image = new Bitmap(slide.Path);                   // apply the image to the picturebox
                 pb.ImageLocation = slide.Path;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox 
-                pb.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+                pb.MouseDown += new MouseEventHandler(timelineItemClickEvent);   // add the timeline right-click menu
 
                 slideLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel
             }
@@ -256,41 +270,82 @@ namespace formNamespace
         }
 
 
-        private void pb_Click(object sender, EventArgs e)
+        private void timelineItemClickEvent(object sender, MouseEventArgs e)
         {
-            if(isSwapping == true)
+            switch (e.Button)
             {
-                PictureBox item = (PictureBox)sender;
-                selectedImages.Add(item);
-                //You are clicking the second slide, perform swap functionality
-                //Error check to make sure you are not clicking on the same slide
-                if(selectedImages[0] != selectedImages[1])
-                {
-                    swapSlidesFunc();
-                }
-                else
-                {
-                    Console.WriteLine("You selected the same image as the one you intially wanted to swap! Swapping mode has been disabled! Please try the swapping mode again, make sure to click on a different image!");
-                    isSwapping = false;
-                    selectedImages.Clear();
-                }
-            }
-            //Else, normal functionality
-            else
-            {
-                //clear selected previous selected picture box of it's selected indicator
-                if(selectedImages.Count != 0) //If there has already been a picture box selected before
-                {
-                    PictureBox oldPicture = selectedImages[0];
-                    deselectPicture(oldPicture);
-                }
-                selectedImages.Clear();
-                PictureBox item = (PictureBox)sender;
-                selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
-                updateTextBoxes();
-                var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
-                selectPicture(item);
-                slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
+                case MouseButtons.Left:     // if it was left clicked
+                    if (isSwapping == true)
+                    {
+                        PictureBox item = (PictureBox)sender;
+                        selectedImages.Add(item);
+                        //You are clicking the second slide, perform swap functionality
+                        //Error check to make sure you are not clicking on the same slide
+                        if (selectedImages[0] != selectedImages[1])
+                        {
+                            swapSlidesFunc();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You selected the same image as the one you intially wanted to swap! Swapping mode has been disabled! Please try the swapping mode again, make sure to click on a different image!");
+                            isSwapping = false;
+                            selectedImages.Clear();
+                        }
+                    }
+                    //Else, normal functionality
+                    else
+                    {
+                        //clear selected previous selected picture box of it's selected indicator
+                        if (selectedImages.Count != 0) //If there has already been a picture box selected before
+                        {
+                            PictureBox oldPicture = selectedImages[0];
+                            deselectPicture(oldPicture);
+                        }
+                        selectedImages.Clear();
+                        PictureBox item = (PictureBox)sender;
+                        selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
+                        updateTextBoxes();
+                        //var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
+                        selectPicture(item);
+                       //slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
+                    }
+                    break;
+                case MouseButtons.Right:
+                    if (isSwapping == true)
+                    {
+                        PictureBox item = (PictureBox)sender;
+                        selectedImages.Add(item);
+                        //You are clicking the second slide, perform swap functionality
+                        //Error check to make sure you are not clicking on the same slide
+                        if (selectedImages[0] != selectedImages[1])
+                        {
+                            swapSlidesFunc();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You selected the same image as the one you intially wanted to swap! Swapping mode has been disabled! Please try the swapping mode again, make sure to click on a different image!");
+                            isSwapping = false;
+                            selectedImages.Clear();
+                        }
+                    }
+                    //Else, normal functionality
+                    else
+                    {
+                        //clear selected previous selected picture box of it's selected indicator
+                        if (selectedImages.Count != 0) //If there has already been a picture box selected before
+                        {
+                            PictureBox oldPicture = selectedImages[0];
+                            deselectPicture(oldPicture);
+                        }
+                        selectedImages.Clear();
+                        PictureBox item = (PictureBox)sender;
+                        selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
+                        updateTextBoxes();
+                        var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
+                        selectPicture(item);
+                        slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
+                    }
+                    break;
             }
         }
 
@@ -302,9 +357,9 @@ namespace formNamespace
             Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));     // find the instance of it in the imported list
             sh.addSlideToSlideshow(selectedSlide);  // add it to the timeline list
 
-            selected.MouseDown -= pb_MouseDown;             // remove the thumbnail right-click menu
+            selected.MouseDown -= previewItemMouseEvent;             // remove the thumbnail right-click menu
             deselectPicture(selected);
-            selected.Click += new EventHandler(pb_Click);   // add the timeline right-click menu
+            selected.MouseDown += new MouseEventHandler(timelineItemClickEvent);   // add the timeline right-click menu
 
             slideLayoutPanel.Controls.Add(selected);    // add it to the timeline flowlayoutpanel
             selectedImages.Clear();
@@ -355,8 +410,11 @@ namespace formNamespace
             Slide selectedSlide = sh.ImportedSlideList.Find(x => x.Path.Contains(tmp));
             sh.removeSlideFromSlideshow(selectedSlide);
 
-            selected.MouseDown += pb_MouseDown;
-            selected.Click -= new EventHandler(pb_Click);
+            //Get rid of the timeline event handler
+            selected.MouseDown -= new MouseEventHandler(timelineItemClickEvent);
+            //replace it with the og
+            selected.MouseDown += previewItemMouseEvent;
+            
 
             thumbnailLayoutPanel.Controls.Add(selected);
             slideLayoutPanel.Controls.Remove(selected);
