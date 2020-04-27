@@ -274,7 +274,7 @@ namespace formNamespace
         {
             switch (e.Button)
             {
-                case MouseButtons.Left:     // if it was left clicked
+                case MouseButtons.Left:     // if it was left clicked, select the object (or swap it) without spawning a dropdown
                     if (isSwapping == true)
                     {
                         PictureBox item = (PictureBox)sender;
@@ -292,7 +292,7 @@ namespace formNamespace
                             selectedImages.Clear();
                         }
                     }
-                    //Else, normal functionality
+                    //Else, select it and spawn dropdown
                     else
                     {
                         //clear selected previous selected picture box of it's selected indicator
@@ -752,6 +752,7 @@ namespace formNamespace
                 progressBar.Maximum = totalDuration;
                 bgw.RunWorkerAsync();
                 button2.Text = "STOP PLAYING";
+                playTracksToolStripMenuItem.Text = "Stop Playing";
             }
             else //currently playing, so stop sequence
             {
@@ -769,6 +770,7 @@ namespace formNamespace
                 totalDuration = 0;
                 numTracksToPlay = 0;
                 button2.Text = "PLAY TRACKS";
+                playTracksToolStripMenuItem.Text = "Play Tracks";
             }
         }
 
@@ -996,7 +998,8 @@ namespace formNamespace
             {
                 //format each panel
                 //Handle division based on time of each track
-
+                //Add mousedown handler to panel
+                panel.MouseDown += new MouseEventHandler(soundtrackItemMouseEvent);
                 panel.BackColor = System.Drawing.Color.LightGreen;
                 //panel.Width = (musicLayoutPanel.Width - 5) / musicLayoutPanel.Controls.Count - 5;
                 double percentage = (double)(sh.SlideshowSoundTrackList.ElementAt(trackLengthIterator).Duration) / (double)(showDuration);
@@ -1008,10 +1011,173 @@ namespace formNamespace
             musicLayoutPanel.Update();
         }
 
-        
+        // mousedown handler that interacts with the soundtracks
+        private void soundtrackItemMouseEvent(object sender, MouseEventArgs e)
+        {
+            Panel soundtrackPanel = (Panel)sender;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:     // if it was left clicked
+                    {
+                        foreach (CheckBox c in soundtrackPanel.Controls)
+                        {
+                            //if it's already selected, de-select it
+                            if (c.Checked == true)
+                            {
+                                c.Checked = false;
+                            }
+                            else if (c.Checked == false)
+                            {
+                                c.Checked = true;
+                            }
 
-        
+                        }
+                    }
+                    break;
+                case MouseButtons.Right:    // if it was right clicked
+                    {
+                        foreach (CheckBox c in soundtrackPanel.Controls)
+                        {
+                            //Select it if it hasn't been selected, but don't deselect it if it was
+                            if (c.Checked == false)
+                            {
+                                c.Checked = true;
+                            }
+                        }
+                        //Select it if it hasn't been selected
+                        soundtrackDropDown.Show(soundtrackPanel, new Point(e.X, e.Y));    //places the menu at the pointer position
+                    }
+                    break;
+            }
 
+        }
+
+        //-----------------------------------------------------------
+        //soundtrack dropdown menu event handlers
+        //-----------------------------------------------------------
+        private void removeTrackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Basically the exact same functionality as the button
+            foreach (Panel cb in musicLayoutPanel.Controls)
+            {
+                foreach (CheckBox c in cb.Controls)
+                {
+                    if (c.Checked == true)
+                    {
+                        string path = c.Text;
+                        // Remove selected track to slideshow
+                        SoundTrack selectedTrack = sh.SlideshowSoundTrackList.Find(x => x.Path.Contains(path));
+                        sh.removeSoundTrackFromSlideshow(selectedTrack);
+                        //update duration of show
+                        showDuration = showDuration - selectedTrack.Duration;
+                    }
+
+                }
+            }
+
+            //update music panel with new list
+            updateMusicPanel();
+        }
+
+        //Swap track functionality
+        private void moveTrackToOtherPositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBox validationBox = new CheckBox();
+            int a = 0;
+            int b = 0;
+            int swapCounter = 0;
+
+            foreach (Panel cb in musicLayoutPanel.Controls)
+            {
+                foreach (CheckBox c in cb.Controls)
+                {
+                    if (c.Checked == true)
+                    {
+                        if (swapCounter == 0) //get first item for swap
+                        {
+                            string path = c.Text;
+                            // Remove selected track to slideshow
+                            SoundTrack selectedTrack = sh.SlideshowSoundTrackList.Find(x => x.Path.Contains(path));
+                            a = sh.SlideshowSoundTrackList.IndexOf(selectedTrack);
+                            swapCounter++;
+                        }
+                        else if (swapCounter == 1) //get second item for swap
+                        {
+                            string path = c.Text;
+                            // Remove selected track to slideshow
+                            SoundTrack selectedTrack = sh.SlideshowSoundTrackList.Find(y => y.Path.Contains(path));
+                            b = sh.SlideshowSoundTrackList.IndexOf(selectedTrack);
+                            swapCounter++;
+                        }
+                        else //too many items for swap
+                        {
+                            Console.WriteLine("ERROR: TOO MANY ITEMS SELECTED FOR SWAP. PLEASE SELECT ONLY TWO ITEMS.\n\n");
+
+                            //reset all checked items
+                            foreach (Panel cr in musicLayoutPanel.Controls)
+                            {
+                                foreach (CheckBox r in cb.Controls)
+                                {
+                                    r.Checked = false;
+                                }
+                            }
+
+                            swapCounter = 0;
+                        }
+                    }
+
+                }
+            }
+
+            //if made it through looping without reset (i.e. only two items selected)
+            // then perform swap
+            if (swapCounter == 2)
+            {
+                SlideShowHandler.Swap(sh.SlideshowSoundTrackList, a, b);
+
+                //update music panel with new list
+                updateMusicPanel();
+            }
+        }
+
+        //Play track functionality
+        private void playTracksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if button not pressed yet or music finished entirely, start play sequence
+            if (musicPlaying == false && !bgw.IsBusy)
+            {
+                musicPlaying = true;
+                numTracksToPlay = sh.SlideshowSoundTrackList.Count;
+
+                //calculate total duration for progress bar
+                foreach (SoundTrack track in sh.SlideshowSoundTrackList)
+                {
+                    totalDuration = totalDuration + track.Duration;
+                }
+                progressBar.Maximum = totalDuration;
+                bgw.RunWorkerAsync();
+                button2.Text = "STOP PLAYING";
+                playTracksToolStripMenuItem.Text = "Stop Playing";
+            }
+            else //currently playing, so stop sequence
+            {
+                currentPlayer.Stop();
+                musicPlaying = false;
+
+                bgw.CancelAsync();
+
+                //reset progess bar at end
+                progressBar.Value = 0;
+                progressBar.Update();
+                // reset tracks played
+                tracksPlayed = 0;
+                // reset duration
+                totalDuration = 0;
+                numTracksToPlay = 0;
+                button2.Text = "PLAY TRACKS";
+                playTracksToolStripMenuItem.Text = "Play Tracks";
+            }
+        }
 
 
         //-----------------------------------------------------------
@@ -1163,5 +1329,7 @@ namespace formNamespace
                 }
             }
         }
+
+       
     }
 }

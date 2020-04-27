@@ -99,6 +99,7 @@
             this.soundtrackDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeTrackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveTrackToOtherPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playTracksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.browseDirectoryDropDown.SuspendLayout();
             this.slideshowDropDown.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -723,21 +724,31 @@
             // 
             this.soundtrackDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeTrackToolStripMenuItem,
-            this.moveTrackToOtherPositionToolStripMenuItem});
+            this.moveTrackToOtherPositionToolStripMenuItem,
+            this.playTracksToolStripMenuItem});
             this.soundtrackDropDown.Name = "soundtrackDropDown";
-            this.soundtrackDropDown.Size = new System.Drawing.Size(237, 70);
+            this.soundtrackDropDown.Size = new System.Drawing.Size(241, 92);
             // 
             // removeTrackToolStripMenuItem
             // 
             this.removeTrackToolStripMenuItem.Name = "removeTrackToolStripMenuItem";
-            this.removeTrackToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.removeTrackToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.removeTrackToolStripMenuItem.Text = "Remove Track";
+            this.removeTrackToolStripMenuItem.Click += new System.EventHandler(this.removeTrackToolStripMenuItem_Click);
             // 
             // moveTrackToOtherPositionToolStripMenuItem
             // 
             this.moveTrackToOtherPositionToolStripMenuItem.Name = "moveTrackToOtherPositionToolStripMenuItem";
-            this.moveTrackToOtherPositionToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.moveTrackToOtherPositionToolStripMenuItem.Text = "Move Track to Other Position...";
+            this.moveTrackToOtherPositionToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.moveTrackToOtherPositionToolStripMenuItem.Text = "Swap With Other Selected Track";
+            this.moveTrackToOtherPositionToolStripMenuItem.Click += new System.EventHandler(this.moveTrackToOtherPositionToolStripMenuItem_Click);
+            // 
+            // playTracksToolStripMenuItem
+            // 
+            this.playTracksToolStripMenuItem.Name = "playTracksToolStripMenuItem";
+            this.playTracksToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.playTracksToolStripMenuItem.Text = "Play Tracks";
+            this.playTracksToolStripMenuItem.Click += new System.EventHandler(this.playTracksToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -854,6 +865,7 @@
         private System.Windows.Forms.ContextMenuStrip soundtrackDropDown;
         private System.Windows.Forms.ToolStripMenuItem removeTrackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveTrackToOtherPositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playTracksToolStripMenuItem;
     }
 }
 
