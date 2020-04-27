@@ -115,7 +115,7 @@ namespace formNamespace
                 {
 
                     PictureBox pb = new PictureBox();
-                    pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
+                    pb.MouseDown += new MouseEventHandler(previewItemMouseEvent);    //Add handler for a dropdown menu on each picture box 
                     pb.BorderStyle = BorderStyle.None;
                     pb.Image = new Bitmap(image);                   // apply the image to the picturebox
                     pb.ImageLocation = image;
@@ -125,18 +125,9 @@ namespace formNamespace
                     sh.createSlide(image);
                 }
             }
+            //A folder has not been selected, do nothing
             else
             {
-
-                PictureBox pb = new PictureBox();
-                pb.MouseDown += new MouseEventHandler(previewItemMouseEvent);    //Add handler for a dropdown menu on each picture box 
-                pb.BorderStyle = BorderStyle.None;
-                pb.Image = new Bitmap(image);                   // apply the image to the picturebox
-                pb.ImageLocation = image;
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
-                
-                thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
-                sh.createSlide(image);
                 Console.WriteLine("Please select a folder to import images.");
             }
         }
