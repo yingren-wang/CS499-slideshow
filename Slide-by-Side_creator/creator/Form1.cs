@@ -108,11 +108,24 @@ namespace formNamespace
             if (drResult == System.Windows.Forms.DialogResult.OK)           // make sure the path is ok
                 dirTextbox.Text = d.SelectedPath;                           // make the path show up on the textbox
 
+            if(d.SelectedPath != "")
+            {
+                string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
+                foreach (string image in images)        // loop for each file in the array
+                {
 
-            string[] images = Directory.GetFiles(d.SelectedPath, "*.JPG");  // make an array that consists of the path to each .JPG file in the selected path
+                    PictureBox pb = new PictureBox();
+                    pb.MouseDown += new MouseEventHandler(pb_MouseDown);    //Add handler for a dropdown menu on each picture box 
+                    pb.BorderStyle = BorderStyle.None;
+                    pb.Image = new Bitmap(image);                   // apply the image to the picturebox
+                    pb.ImageLocation = image;
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;  // make the picture fit the picturebox      
 
-
-            foreach (string image in images)        // loop for each file in the array
+                    thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
+                    sh.createSlide(image);
+                }
+            }
+            else
             {
 
                 PictureBox pb = new PictureBox();
@@ -124,8 +137,8 @@ namespace formNamespace
                 
                 thumbnailLayoutPanel.Controls.Add(pb);          // add the picturebox to the thumbnail flowlayoutpanel    
                 sh.createSlide(image);
+                Console.WriteLine("Please select a folder to import images.");
             }
-
         }
 
         // dropdown menu for pictureboxes in the preview panel
