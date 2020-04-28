@@ -309,9 +309,7 @@ namespace formNamespace
                         PictureBox item = (PictureBox)sender;
                         selectedImages.Add(item);                   // add the picturebox that was clicked on to the selectedImages list
                         updateTextBoxes();
-                        //var mouseEventArgs = e as MouseEventArgs;   // lets us use mouseevent stuff to get the proper mouse location to display the new dropdown menu
                         selectPicture(item);
-                       //slideshowDropDown.Show(item, new Point(mouseEventArgs.X, mouseEventArgs.Y));    //places the menu at the pointer position
                     }
                     break;
                 case MouseButtons.Right:
@@ -379,7 +377,6 @@ namespace formNamespace
                 instructionsTextBox.Text = "Awesome! Be sure to add some Soundtracks to your timeline as well!";
             }
             // change the picturebox back to not selected once the add button is clicked
-            // selected.BorderStyle = BorderStyle.None;
         }
 
         //Functionality for the swap button
@@ -1250,8 +1247,6 @@ namespace formNamespace
             {
                 saveFileLocation = svdlg.FileName.ToString();
             }
-            // saveFileLocation now holds name of desired file name in desired folder
-            //Console.WriteLine(saveFileLocation);
 
             //Make a new directory at the location specified by the user
             //call the directory what the user entered
@@ -1275,26 +1270,6 @@ namespace formNamespace
             //Update the user 
             instructionsTextBox.Text = "Your project was saved here:\n" + saveFileLocation +
                 "\n\n Please use the SlidebySide Player Application to view your project!";
-
-            //TESTING PURPOSES ONLY*************???????????????????????????
-            // REMOVE BEFORE FINAL PRODUCTION ?????????????????????????????
-            //List<SoundTrack> testList = de.ImportSoundTracksFromFile();
-
-            //foreach(SoundTrack x in testList)
-            //{
-            //    Console.WriteLine(x.Path);
-            //    Console.WriteLine(x.Duration);
-            //}
-
-            //List<Slide> testSlideList = de.ImportSlidesFromFile();
-
-            //foreach (Slide x in testSlideList)
-            //{
-            //    Console.WriteLine(x.Path);
-            //    Console.WriteLine(x.Duration);
-            //}
-
-            ////END TESTING CODE***********????????????????????????????????
         }
 
         private void label4_Click(object sender, EventArgs e)
